@@ -2,8 +2,8 @@
 
 # Mining Intelligence
 ### A Bittensor (τ) University Thesis
-
 </div>
+![HyperTA](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/assets/img/bittensor.png)
 
 ## Overview
 
