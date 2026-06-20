@@ -6,6 +6,11 @@
 </div>
 
 
+## Acknowledgments
+
+- The entire Open Source/Weights Community that will contineu to democratize Intelligence.
+<br?>
+
 ## Overview
 
 This thesis argues that Bittensor represents an evolution of capitalism — a crypto-incentivized market for intelligence compute, where mechanisms like Yuma Consensus function as an optimization process analogous to natural selection, rewarding the miners and validators that best serve a subnet's objective function.
@@ -26,6 +31,8 @@ Key tokenomics points argued in this section: TAO follows a Bitcoin-style fixed 
 ## Part 2 — Mining in Practice
 
 The empirical chapter mines a live subnet hands-on to validate the theoretical framing. Conceptual sections (mining loop/tempo mechanics, Yuma Consensus in practice, subnet selection criteria) are kept separate from setup/walkthrough material to avoid redundancy with the existing Linux environment chapter. Subnets referenced for context and comparison include Chutes (SN64), Ridges, Targon, and Templar.
+
+
 
 ## Supervision
 
