@@ -1,36 +1,39 @@
-# Mining Intelligence. 
-a Bittensor (τ) University Thesis
-<br/>
-<br/>
-Bittensor Decentralized AI + Subnet Mining implementation for my University Thesis  
-🚧 Under Construction 🚧
+<div align="center">
+
+# Mining Intelligence
+### A Bittensor (τ) University Thesis
+
+</div>
 
 ## Overview
-This repository is part of my university thesis research on **Bittensor subnet mining**.  
-The project explores the process, performance, and implications of mining within the Bittensor ecosystem.
 
-![Bittensor](image.png)
+This thesis argues that Bittensor represents an evolution of capitalism — a crypto-incentivized market for intelligence compute, where mechanisms like Yuma Consensus function as an optimization process analogous to natural selection, rewarding the miners and validators that best serve a subnet's objective function.
 
-## Objectives
-- Study the architecture of Bittensor and its subnet system.  
-- Set up and configure a subnet miner/validator.  
-- Collect and analyze mining performance data.  
-- Contribute findings to academic research on decentralized AI and compute networks.
+The thesis is split into two parts:
 
-## Work in Progress
-- [ ] Literature review on Bittensor and decentralized AI.  
-- [ ] Setup of mining environment.  
-- [ ] Experiments with subnet mining.  
-- [ ] Data analysis and evaluation.  
-- [ ] Thesis documentation.
+1. **Theory** — Bittensor framed as the latest stage in the evolution of capitalism and cryptocurrency: from the history of capitalism, through the Web3 era (Bitcoin, Ethereum, consensus mechanisms), to Bittensor's own architecture (Yuma Consensus, Dynamic TAO, subnet incentive markets).
+2. **Empirical / hands-on mining** — validating the theory in practice by actually mining a subnet, rather than treating the argument as purely conceptual.
 
+The title is intentionally double-meaning: *mining* as the literal hands-on crypto work this thesis performs, and *intelligence* as the compute being harnessed and incentivized — the title previews the paper's own two-part structure.
 
+## Part 1 — Theory
 
-## References
-- [Bittensor Documentation](https://docs.bittensor.com)  
-- [Subnet Mining Guide](https://docs.bittensor.com/subnets/mining)  
-- Academic papers on decentralized AI and blockchain-based compute networks
+Covers the history of capitalism, the Web3 era (Bitcoin, Ethereum, altcoins, consensus mechanisms), and Bittensor's architecture in depth: Yuma Consensus, tokenomics, Dynamic TAO (dTAO), and the subnet incentive-market model.
 
-## Disclaimer
-This repository is for **academic research only**.  
-It is **not intended for production mining or financial gain**.
+Key tokenomics points argued in this section: TAO follows a Bitcoin-style fixed 21 million supply cap with programmed halving events (first halving ~December 2025), not unbounded inflation. Bittensor extends this with a two-layer emission system — root TAO plus per-subnet alpha tokens, each independently capped at 21 million with its own halving schedule — distinguishing it from Bitcoin's single-asset model.
+
+## Part 2 — Mining in Practice
+
+The empirical chapter mines a live subnet hands-on to validate the theoretical framing. Conceptual sections (mining loop/tempo mechanics, Yuma Consensus in practice, subnet selection criteria) are kept separate from setup/walkthrough material to avoid redundancy with the existing Linux environment chapter. Subnets referenced for context and comparison include Chutes (SN64), Ridges, Targon, and Templar.
+
+## Supervision
+
+- Supervisor: Prof. Dr. Manolis Stiakakis
+- Co-supervisor: Prof. Dr. Eutuxios Protopapadakis
+- University of Macedonia (ΠΑΜΑΚ) — Applied Informatics
+
+## Author
+
+Panagiotis Mokos
+- GitHub: [MwkosP](https://github.com/MwkosP)
+- LinkedIn: [panagiotis-mokos](https://linkedin.com/in/panagiotis-mokos)
