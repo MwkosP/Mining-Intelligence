@@ -2,8 +2,9 @@
 
 # Mining Intelligence
 ### A Bittensor (τ) University Thesis
-</div>
 ![TAO](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/taowhite.png)
+</div>
+
 
 ## Overview
 
