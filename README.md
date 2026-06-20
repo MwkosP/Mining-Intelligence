@@ -1,7 +1,7 @@
 <div align="center">
 
 # Mining Intelligence
-### A Bittensor (τ) University Thesis
+### A [Bittensor (τ)](https://github.com/opentensor/bittensor)  University Thesis
 ![TAO](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/tao.jpg)
 ![TAO](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/bittensorthesis.png)
 </div>
