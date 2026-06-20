@@ -1,4 +1,4 @@
-# Decentralized AI 
+# Mining Intelligence. a Bittensor (τ) University Thesis 
 Bittensor Decentralized AI + Subnet Mining implementation for my University Thesis  
 🚧 Under Construction 🚧
 
