@@ -1,9 +1,8 @@
 <div align="center">
 
 # Mining Intelligence
-### A [Bittensor (τ)](https://github.com/opentensor/bittensor)  University Thesis
+### A [Bittensor (τ)](https://github.com/opentensor/bittensor)  University Thesis<br/> on Decentralized AI
 ![TAO](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/tao.jpg)
-![TAO](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/bittensorthesis.png)
 </div>
 
 
