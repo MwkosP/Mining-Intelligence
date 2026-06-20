@@ -9,7 +9,7 @@
 ## Acknowledgments
 
 - The entire Open Source/Weights Community that will contineu to democratize Intelligence.
-<br?>
+<br/>
 
 ## Overview
 
