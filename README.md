@@ -1,4 +1,7 @@
-# Mining Intelligence. a Bittensor (τ) University Thesis 
+# Mining Intelligence. 
+a Bittensor (τ) University Thesis
+<br/>
+<br/>
 Bittensor Decentralized AI + Subnet Mining implementation for my University Thesis  
 🚧 Under Construction 🚧
 
