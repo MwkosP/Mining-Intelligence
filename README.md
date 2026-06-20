@@ -31,6 +31,8 @@ Key tokenomics points argued in this section: TAO follows a Bitcoin-style fixed 
 ## Part 2 — Mining in Practice
 
 The empirical chapter mines a live subnet hands-on to validate the theoretical framing. Conceptual sections (mining loop/tempo mechanics, Yuma Consensus in practice, subnet selection criteria) are kept separate from setup/walkthrough material to avoid redundancy with the existing Linux environment chapter. Subnets referenced for context and comparison include Chutes (SN64), Ridges, Targon, and Templar.
+<br/>
+This part also has hands on Coding as a potential Miner Example for Subnet 32 (SN 32) ItsAI. Dataset Selection/Preprocessing, Feature Engineering, Exploratory Data Analysis, Model Selection/training/evaluation & Ultimately Fine Tuning & Findings Report.    
 
 
 
