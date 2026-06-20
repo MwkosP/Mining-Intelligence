@@ -28,8 +28,7 @@ The empirical chapter mines a live subnet hands-on to validate the theoretical f
 
 ## Supervision
 
-- Supervisor: Prof. Dr. Manolis Stiakakis
-- Co-supervisor: Prof. Dr. Eutuxios Protopapadakis
+- Supervisors: Prof. Dr. Manolis Stiakakis, Prof. Dr. Eutuxios Protopapadakis
 - University of Macedonia (ΠΑΜΑΚ) — Applied Informatics
 
 ## Author
