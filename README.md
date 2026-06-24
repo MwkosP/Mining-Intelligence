@@ -14,7 +14,7 @@
 ## Overview
 
 This thesis argues that Bittensor represents an evolution of capitalism — a crypto-incentivized market for intelligence compute, where mechanisms like Yuma Consensus function as an optimization process analogous to natural selection, rewarding the miners and validators that best serve a subnet's objective function.
-
+![Finpipe](https://raw.githubusercontent.com/MwkosP/Finpipe/main/miningintelligence.png)
 
 The thesis is split into two parts:
 
