@@ -2,7 +2,7 @@
 
 # Mining Inτelligence
 ### A [Bittensor (τ)](https://github.com/opentensor/bittensor)  University Thesis<br/> on Decentralized AI
-![TAO](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/imgs/tao_transparent.png)
+![TAO](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/Ιmgs/tao_transparent.png)
 </div>
 
 
@@ -14,7 +14,7 @@
 ## Overview
 
 This thesis argues that Bittensor represents an evolution of capitalism — a crypto-incentivized market for intelligence compute, where mechanisms like Yuma Consensus function as an optimization process analogous to natural selection, rewarding the miners and validators that best serve a subnet's objective function.<br/>
-![Finpipe](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main//imgs/miningintelligence.png)
+![Finpipe](https://raw.githubusercontent.com/MwkosP/Mining-Intelligence/main/Ιmgs/miningintelligence.png)
 
 The thesis is split into two parts:
 
