@@ -1,0 +1,2320 @@
+% ============================================================
+%  UNIVERSITY THESIS — THE EVOLUTION OF CAPITALISM
+%  A Bittensor Thesis
+%  Compiled with pdflatex (or XeLaTeX / LuaLaTeX)
+% ============================================================
+
+\documentclass[12pt, a4paper, oneside]{report}
+
+% ── Packages ────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}                  % clean vector fonts
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
+% Page geometry
+\usepackage[
+  top=3cm, bottom=3cm,
+  left=3.5cm, right=2.5cm,           % binding margin on left
+]{geometry}
+
+% Typography
+\usepackage{microtype}                % micro-kerning / justification
+\usepackage{setspace}
+\onehalfspacing                       % 1.5 line spacing (common thesis standard)
+
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\slshape\leftmark}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Bibliography (BibLaTeX + Biber)
+\usepackage[
+  backend=biber,
+  style=apa,
+  sorting=nyt,
+  natbib=true,
+]{biblatex}
+% \addbibresource{references.bib}    % ← uncomment and point to your .bib file
+
+% Maths, tables, figures
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Hyperlinks (load last)
+\usepackage[
+  colorlinks = true,
+  linkcolor  = NavyBlue,
+  citecolor  = NavyBlue,
+  urlcolor   = NavyBlue,
+  pdftitle   = {The Evolution of Capitalism: A Bittensor Thesis},
+  pdfauthor  = {Author Name},
+]{hyperref}
+
+% ── Custom commands ──────────────────────────────────────────
+\newcommand{\TAO}{$\tau$}            % Bittensor native token symbol
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+
+% ── Theorem / definition styling ────────────────────────────
+\theoremstyle{definition}
+\newtheorem{remark}{Remark}[chapter]
+
+% ============================================================
+%  DOCUMENT
+% ============================================================
+\usepackage{listings}
+\usepackage{color}
+
+\begin{document}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color[gray]{0.95},
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=true,
+  showstringspaces=false,
+  tabsize=2,
+  language=bash,
+}
+% ── Title page ──────────────────────────────────────────────
+\begin{titlepage}
+  \centering
+  \vspace*{1.5cm}
+
+  {\large \bfseries \textsc{University of Macedonia}}\\[0.4cm]
+  {\large Computer Science \& Applied Informatics, Information Systems }\\[0.2cm]
+  \rule{\linewidth}{0.5pt}\\[1.2cm]
+
+  {\Huge \bfseries Mining Intelligence}\\[0.6cm]
+{\LARGE \itshape Towards Decentralized, Permissionles AI\\A \textbf{Bittensor} Thesis}\\[0.2cm]
+{\small \itshape (Decentralized AI)}\\[0.2cm]
+
+  \rule{\linewidth}{0.5pt}\\[1cm]
+
+  \begin{minipage}[t]{0.45\textwidth}
+    \begin{flushleft}
+      \textbf{Author}\\
+      Mwkos Panagiotis\\
+
+    \end{flushleft}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.45\textwidth}
+    \begin{flushright}
+      \textbf{Supervisors}\\
+      Prof.\ Dr.\ Manolis Stiakakis\\
+      Prof.\ Dr.\ Eutuxios Protopapadakis\\
+
+    \end{flushright}
+  \end{minipage}
+
+  \vspace{1.5cm}
+
+  \includegraphics[width=12cm]{tao.png}
+
+  \vspace{1.5cm}
+
+
+  {\large Academic Year 2025--2026}\\[0.4cm]
+
+
+\end{titlepage}
+
+% ── Front matter ────────────────────────────────────────────
+\pagenumbering{roman}
+
+% ── Abstract ────────────────────────────────────────────────
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+This thesis explores the possible evolution of capitalism through the lens of decentralised
+artificial intelligence, with a focus on \textbf{Bittensor}~(\TAO)~[6]—a Decentralized peer-to-peer
+protocol that incentivises The Global Intelligence-Models/Code to compete and collaborate in
+an open, permissionless network, all striving to provide the best \textbf{Digital Commodity}.
+
+Beginning with a historical overview of capitalism's major phases—from mercantilism
+and industrialism to financialised platform economies~[4,5]—the thesis examines how each
+era redefined value, labour, and ownership. It then investigates how Bittensor's
+architecture, consensus mechanism, and \textbf{Mining Implementation Mechanisms/Architecture}~[3,7] may constitute
+a structurally new phase in this evolution: one where intelligence itself becomes
+the commodity, and decentralised networks replace centralised institutions as the
+primary engines of value creation.
+
+\bigskip
+\noindent\textbf{Keywords:} Bittensor, Decentralised AI, Capitalism, Evolution, Incentives, Yuma Consensus, Mining, Validating, Subnets, Tokenomics.
+
+% ── Acknowledgements ────────────────────────────────────────
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+The author wishes to thank his University Supervisors and ALL of the Open Source Community that has shaped and WILL CONTINUE to democratize intelligence for everyone going forward\dots
+
+% ── Table of contents ───────────────────────────────────────
+\tableofcontents
+
+\listoftables
+
+% ── Main matter ─────────────────────────────────────────────
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+% ============================================================
+%  Background and Motivation
+% ============================================================
+\chapter*{Background and Motivation}
+\addcontentsline{toc}{chapter}{Background and Motivation}
+
+
+The motivation for this thesis did not originate in academic literature. It originated
+in observation—of systems, of incentives, and of the recurring patterns that emerge
+when human institutions fail to reward the people who drive them forward.\\
+
+The first concern was concentration. As technology companies scaled, it became
+increasingly clear that the entities controlling the most valuable digital
+commodities—code, data, intelligence—had little structural incentive to share
+them, improve them, or relinquish control over them. Monopolisation, in this
+context, is not merely an economic outcome; it is the rational end-state of
+any system where ownership is centralised and competition is suppressed.\\
+
+The counterexample came from \textbf{GitHub}. By making code openly accessible
+and attributable, GitHub demonstrated that transparency and shared ownership
+could unlock contributions at a scale no single company could replicate.
+Developers contributed not because they were told to, but because the system
+rewarded effort with visibility, reputation, and influence. Yet even this
+system operated within a broader economy defined by inflation, wage stagnation,
+and the persistent misalignment between contribution and compensation.\\
+
+This led to \textbf{Bitcoin}~[1]—a protocol that replaced institutional trust with
+mathematical proof, and rewarded participants directly and transparently for
+the work they performed in maintaining the network. For the first time, an
+economic system existed in which the rules could not be arbitrarily changed
+by those in power providing true Digital Ownership.\\
+
+Parallel observations emerged from platforms such as \textbf{Kaggle}, where
+data scientists compete openly to solve real problems, ranked by performance
+and rewarded accordingly. The model was simple but powerful: define a useful
+task, open it to everyone, reward the best result. The output was not merely
+a winning model—it was a global, self-organising meritocracy of intelligence.\\
+
+The sharpest contrast, however, came from direct experience within conventional
+corporate structures. The defining feature of the modern firm is not efficiency—it
+is misalignment. Workers are rarely compensated in proportion to the value they
+generate. Incentive structures reward tenure over talent, compliance over
+creativity. Entire departments exist not to produce value, but to manage the
+friction created by the absence of genuine incentives. Human Resources, in
+many organisations, functions less as a mechanism for unlocking human potential
+and more as a bureaucratic bottleneck—a layer of administration interposed
+between ability and reward.\\
+
+It was against this backdrop that \textbf{Bittensor}~(\TAO)~[3,6] came into focus:
+a protocol that takes the open competition of Kaggle, the trustless reward
+mechanism of Bitcoin, and the collaborative transparency of GitHub—and applies
+them to the production of Intelligence itself. On Bittensor, Models/Participants
+compete in open subnets, validators score their outputs, and emissions flow
+directly to those whose intelligence is deemed most useful by the network.
+There are no intermediaries, no HR departments, no opaque performance reviews.
+There is only contribution—and its verifiable reward.
+All Participants are Incentivized to Be Honest and Produce the best Digital Commodity they can produce...\\
+
+This thesis is an attempt to understand what that means for the future of
+capitalism itself.
+
+
+% ============================================================
+%  CHAPTER 1 — THE HISTORY AND RISE OF CENTRALIZED MONEY
+% ============================================================
+\chapter{The History and Rise of Centralized Money}
+\label{chap:history}
+
+The history of money begins with simple systems of exchange, where goods and services
+were traded directly through barter. As societies expanded and economic activity became
+more complex, the need for a standardized medium of exchange led to the creation of
+early forms of money—objects such as grain, metal pieces, and later, minted coins.
+These forms of money held value because communities collectively agreed upon their
+worth, allowing trade to occur more efficiently and reliably~[5].\\[0.4cm]
+
+Over time, the authority to issue money shifted from individuals and merchants to
+centralized institutions. Ancient kingdoms and empires began minting coins stamped
+with the symbols of rulers, marking the emergence of money as a tool of state
+legitimacy and control. This process intensified with the development of banking
+systems, where early banks issued notes, safeguarded deposits, and facilitated
+large-scale transactions. As trust in these institutions grew, so did their influence
+over economic life~[4,5].\\[0.4cm]
+
+The rise of centralized money power accelerated with the creation of national banks
+and the establishment of government-backed currencies. Paper money, once a substitute
+for physical commodities like gold or silver, became the dominant form of currency as
+states asserted control over its issuance and regulation. This transition positioned
+central banks as key actors in economic management, with the ability to influence
+interest rates, credit availability, and overall financial stability~[4].\\[0.4cm]
+
+Through these developments, money evolved from a decentralized social agreement into
+a highly centralized mechanism governed by political and financial authorities.
+Centralized control over currency provided states with powerful tools for taxation,
+military funding, economic intervention, and social governance. By concentrating
+monetary authority, governments and financial institutions gained unprecedented
+influence over economic systems—marking a fundamental shift in how value, power,
+and economic activity were organized~[4,5].\\[1.2cm]
+
+% ── Timeline ────────────────────────────────────────────────
+\begin{center}
+  \rule{0.4\linewidth}{0.3pt}~{\large $\star$}~\rule{0.4\linewidth}{0.3pt}
+\end{center}
+
+\vspace{0.6cm}
+
+\begin{center}
+\small
+\textbf{Barter Trade}~$\rightarrow$~\textbf{Commodity Money}~$\rightarrow$~%
+\textbf{Metal Coins}~$\rightarrow$~\textbf{Gold Standard}~$\rightarrow$~%
+\textbf{Paper Notes}~$\rightarrow$~\textbf{Fiat Currency}~$\rightarrow$~%
+\textbf{Digital Money \& Commodities}~$\rightarrow$~{\large \bfseries (?)}
+\end{center}
+
+\vspace{0.6cm}
+
+\begin{center}
+  \rule{0.4\linewidth}{0.3pt}~{\large $\star$}~\rule{0.4\linewidth}{0.3pt}
+\end{center}
+
+
+% ============================================================
+%  CHAPTER 2 — DECENTRALIZED MONEY
+% ============================================================
+\chapter{The Web3 Era}
+\section{Decentralized Money}
+\label{chap:decentralized}
+
+The emergence of decentralized money began with the introduction of \textbf{Bitcoin}
+in 2009, proposed by the pseudonymous \textbf{Satoshi Nakamoto}~[1]. Bitcoin was a direct
+response to the vulnerabilities exposed by the \textbf{2008 Financial Crisis}—a moment
+that shattered public trust in banks, governments, and financial intermediaries. Its
+goal was simple: money that required no trusted third party, operated transparently,
+and could not be controlled or manipulated by any single entity.\\[0.4cm]
+
+Bitcoin achieves this through a \textbf{distributed ledger}—the blockchain—where
+thousands of independent nodes collectively verify transactions using cryptographic
+proofs, without any central authority. The \textbf{Proof-of-Work} consensus mechanism
+drives this process: miners compete to solve mathematical puzzles, and the winner earns
+the right to add the next block and receive newly issued Bitcoin. Security and monetary
+policy are thus encoded directly into software~[1].\\[0.4cm]
+
+Bitcoin's supply is \textbf{capped at 21 million coins}—a fixed limit that stands in
+deliberate contrast to fiat currencies, which can be printed without bound. This
+enforced scarcity, combined with its decentralized architecture, established Bitcoin
+as \emph{digital gold}: a hedge against inflation and monetary manipulation, and the
+first asset in history to offer true self-custody at a global scale~[1].\\[1.0cm]
+
+Blockchain technology is widely misunderstood. The core idea—a peer-to-peer
+distributed network maintained by its own participants—did not originate with Bitcoin.
+Its earliest recognizable form was \textbf{torrenting}: a decentralized file-sharing
+protocol through which users simultaneously downloaded and contributed content, with
+no central server and no single point of control. People built and maintained this
+network not by mandate, but because the system \emph{aligned their incentives} to
+do so.\\[0.4cm]
+
+Bitcoin took that same architecture and applied it to money~[1]. Just as a torrent node
+contributes bandwidth in exchange for access, a Bitcoin miner contributes computation
+in exchange for reward. The insight was not merely technical—it was economic.
+\textbf{Aligned incentives produce genuine innovation.} Bitcoin gave the world the
+first \emph{deflationary, decentralized, and truly self-custodied} hard money—not
+because institutions mandated it, but because the protocol made participation
+individually rational and collectively beneficial.
+
+
+% ============================================================
+%  CHAPTER 2 — Altcoins
+% ============================================================
+\section{Altcoins}
+\label{chap:Altcoins}
+
+Despite Bitcoin's revolutionary design, it was never optimally suited to replace
+fiat, Visa, or banking systems entirely. As stated in Nakamoto's original whitepaper~[1],
+Bitcoin was conceived as a \textbf{peer-to-peer electronic cash system}—yet its
+prioritisation of security and decentralization came at the cost of transaction
+throughput. Its slow \textbf{TPS (Transactions Per Second)} made it poorly equipped,
+on its own, to serve the demands of global everyday commerce.\\[0.4cm]
+
+The \textbf{Web3 era} represents the expansion of blockchain technology beyond digital
+money into programmable, decentralized applications. Early projects such as Ethereum, Litecoin, Filecoin etc explored variations in speed, supply mechanics, and use cases. Later networks—Cardano, Polkadot, Solana—introduced scalable architectures
+and new economic models, shifting the focus from simple value transfer to broader
+decentralized ecosystems.\\[0.4cm]
+
+Among all these developments, \textbf{Ethereum} played the most pivotal role.
+Launched in 2015, Ethereum introduced \textbf{smart contracts}~[2]—self-executing programs
+stored on the blockchain—transforming blockchains from static ledgers into fully
+expressive global computation platforms. This enabled decentralized applications
+(dApps), DeFi, NFTs, and thousands of programmable economic systems. Ethereum's later
+transition from \textbf{Proof-of-Work to Proof-of-Stake} significantly reduced energy
+consumption, increased TPS, and laid the foundation for further scaling upgrades such
+as sharding. It remains the dominant smart-contract platform and central building block
+of Web3~[2].
+
+\label{sec:networks}
+
+
+
+
+% ============================================================
+%  CHAPTER 2 — CONSENSUS MECHANISMS
+% ============================================================
+\section{Consensus Mechanisms}
+\label{chap:consensus}
+
+As the ecosystem matured, distinct networks emerged—each making deliberate trade-offs
+between speed, security, decentralization, and privacy.\\[0.4cm]
+
+\textbf{Ethereum} (PoS, Smart-Contract Pioneer)~[2] prioritizes decentralization, security,
+and developer adoption. Layer-2 rollups now handle most transaction throughput,
+positioning Ethereum as the settlement and coordination layer of Web3 rather than a
+high-TPS execution chain.\\[0.4cm]
+
+\textbf{Solana} (PoS + Proof of History) is designed for maximum throughput and low
+latency. Its unique Proof of History mechanism enables very high TPS and low fees,
+making it well-suited for real-time applications—DeFi, NFTs, and on-chain gaming—at
+the cost of higher hardware requirements.\\[0.4cm]
+
+\textbf{Kaspa} (PoW, blockDAG Architecture) reimagines Proof-of-Work by replacing
+the traditional linear chain with a \textbf{blockDAG (GHOSTDAG)} structure, allowing
+multiple blocks to be produced and confirmed in parallel. This enables approximately
+one-second block times while preserving PoW security and decentralization—widely
+considered a serious attempt at solving the \emph{Blockchain Trilemma} of speed,
+scalability, and decentralization.\\[0.4cm]
+
+\textbf{Sui} (PoS, Object-Based Execution) enables parallel transaction execution
+through an object-based data model, achieving high throughput and low confirmation
+times—optimized for games and consumer-facing applications.\\[0.4cm]
+
+\textbf{Monero} (PoW, Privacy-First) uses ring signatures, stealth addresses, and
+confidential transactions to ensure that senders, receivers, and amounts remain
+private by default. It is the only major cryptocurrency used natively for private
+peer-to-peer transactions, including on dark web markets—a distinction that
+underscores both its utility and its controversy.\\[0.4cm]
+
+\textbf{Zcash} (PoW, Selective Privacy) introduced \textbf{zk-SNARKs}—zero-knowledge
+proofs—as the first blockchain to implement them correctly, allowing users to
+optionally shield transactions, hiding sender, receiver, and amount
+mathematically, while retaining the option of full transparency.
+
+A consensus mechanism is the process a blockchain uses to agree on a single, shared
+version of the ledger across thousands of independent nodes. It determines who gets
+to add new blocks, which transactions are valid, and how the network resolves
+conflicts—all without relying on a central authority~[18].\\[0.4cm]
+
+\textbf{Hyperliquid} (HyperBFT, On-Chain Perpetuals) is a Layer 1 blockchain built
+entirely around a single purpose: a fully on-chain central limit order book delivering
+sub-second finality at over 200,000 orders per second. No venture capital, no
+centralised matching engine—by 2024 it held over 55\% of the global perpetual DEX
+market, proving that professional-grade financial infrastructure no longer needs to
+be centralised.\\[0.4cm]
+
+In simple terms, Consensus is:
+\begin{center}
+\textit{``How do strangers agree on the truth of the Network without trusting each other?''}\\[1cm]
+\end{center}
+
+Each network makes deliberate trade-offs between security, decentralization,
+scalability, energy efficiency, and complexity. The following Table shows some of the
+most significant consensus designs in the current ecosystem~[25].\\[0.6cm]
+
+% ── Table ───────────────────────────────────────────────────
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{p{2.8cm} p{3.2cm} p{4cm} p{4cm}}
+\toprule
+\textbf{Network} & \textbf{Mechanism} & \textbf{Strengths} & \textbf{Weaknesses} \\
+\midrule
+
+\textbf{Bitcoin} & Proof of Work &
+Very high security \& decentralization &
+Low TPS, high energy use, slow finality \\
+
+\textbf{Ethereum} & Proof of Stake &
+Energy efficient, faster finality, scalable &
+Capital concentration risk, complex protocol \\
+
+\textbf{Cardano} & PoS – Ouroboros &
+Strong security assumptions, sustainable design &
+Slower development, lower throughput \\
+
+\textbf{Solana} & PoS + Proof of History &
+Very high throughput, low latency &
+High hardware requirements, centralization pressure \\
+
+\textbf{Sui} & PoS – Parallel Execution &
+High throughput, fast confirmations &
+Complex execution model, high validator requirements \\
+
+\textbf{Kaspa} & PoW – BlockDAG (GhostDAG) &
+Fast confirmations with PoW security, fair mining &
+Complex consensus logic, less battle-tested \\
+
+\textbf{Monero} & PoW – Privacy Focused &
+Strong privacy, ASIC-resistant \& fair mining &
+Lower scalability, heavier transaction data \\
+
+\textbf{Zcash} & PoW + zk-SNARKs &
+Optional cryptographic privacy, transparency &
+High complexity, trusted setup assumptions \\
+
+\textbf{Hyperliquid} & HyperBFT – On-Chain CLOB &
+Sub-second finality, 200k orders/sec, no VC &
+Single-purpose chain, validator centralisation risk \\
+
+\textbf{Bittensor} & Yuma Consensus – Incentive-Based &
+Aligns incentives with real-world utility, energy efficient &
+Complex incentive design, harder security reasoning \\
+
+\bottomrule
+\end{tabular}
+\caption{Consensus mechanism trade-offs across major blockchain networks.}
+\label{tab:consensus}
+\end{table}
+
+\vspace{0.4cm}
+\noindent\textbf{Summary.} No single consensus mechanism optimises all variables
+simultaneously. Every network makes a deliberate choice about what to prioritise—
+security, speed, privacy, or utility—and accepts the corresponding trade-offs.
+Bittensor's contribution is to extend this design space beyond block production
+into the domain of \emph{intelligence itself}: consensus not over transactions,
+but over the Value and Validity of Intelligence~[9,15].
+
+
+% ============================================================
+%  CHAPTER 3 — BITTENSOR (τ)
+% ============================================================
+\chapter{Bittensor (\TAO)}
+\label{chap:bittensor}
+
+\section{Decentralized Intelligence (Web4)}
+\label{sec:web4}
+
+The natural and most logical path in the evolution of digital technologies is the
+convergence of decentralized systems with the most valuable and promising advancement
+of our lifetime: Artificial Intelligence. As blockchain matured—from decentralized
+money to programmable networks—integrating AI into these systems became an inevitable
+next step. The idea of combining distributed incentives, open participation, and global
+coordination with intelligent computation attracted significant interest across the
+industry~[3].\\[0.4cm]
+
+Many Blockchains attempted to merge with AI, exploring visions of decentralized
+model training, data marketplaces, and AI governance. However, most struggled with
+scalability, economic viability, or accurately describing what intelligence or model should be valued. Among these efforts,
+\textbf{Bittensor}~(\TAO)~[3,6] emerged as the most coherent and promising implementation—
+successfully aligning blockchain incentives with the production of high-quality machine
+intelligence. It built an \textbf{Incentive Layer}: a permissionless system in which anyone
+with the right knowledge and expertise can participate, contribute, and be rewarded—
+entirely bypassing centralised means of gatekeeping such as location-based hiring,
+slow institutional processes, and opaque performance evaluation~[7,8].\\[0.4cm]
+
+At its core, Bittensor represents what can be described as \textbf{Web4}: the era of
+decentralized intelligence. Participants contribute machine learning models—or whatever
+computational solution the network demands—validators assess their outputs, and the
+network issues \TAO\ tokens based on performance. Intelligence itself becomes an
+\emph{economic resource and commodity}~[3].\\[0.4cm]
+
+This architecture eliminates the need for a centralised AI provider. Instead, the
+network becomes a simultaneously \textbf{competitive and collaborative} marketplace
+of models, each improving through continuous incentive-driven evolution. Bittensor's
+design mirrors \emph{natural selection}: high-performing intelligence is rewarded,
+weaker models fall behind, and the system grows more capable over time~[3,8].\\[0.4cm]
+
+By enabling anyone in the world to contribute or access intelligence, Bittensor
+establishes intelligence as a \textbf{decentralized public good}. It extends the logic
+of Bitcoin and Ethereum into a new domain—where not only value or computation is
+decentralized, but the \emph{creation of intelligence itself}~[6,7]. Bittensor was never
+solely intended for machine learning goods. It was designed for any problem that can
+be rigorously expressed and assessed:
+
+\begin{center}
+\textit{``If you can express your problem and the assessment well enough,}\\
+\textit{the network will solve the problem for you.''}
+\end{center}
+
+
+\section{The Network}
+\label{sec:network}
+
+\subsection{Architecture and Participants}
+
+Bittensor's network is not a single monolithic blockchain. It is a \textbf{layered
+ecosystem} of specialised sub-networks, each dedicated to a specific problem or
+domain of intelligence. At the top level sits the \textbf{root network}, which
+governs the allocation of \TAO\ emissions across the entire ecosystem. Beneath it
+operate hundreds of independent \textbf{Subnets}—each one a self-contained
+competitive market for a specific type of intelligence or digital commodity. Bittensor is Inflationary by design especially in its early days so it can fund its own Subnets and pay the participants through Emissions~[7,10].\\[0.4cm]
+
+The network is composed of four core participants~[7]:
+
+\begin{description}
+  \item[\textbf{Subnet Owners}] are the architects of their own Sub-System(Subnet). They define the
+  problem, design the incentive mechanism, and deploy the subnet. In economic terms,
+  they function as \emph{entrepreneurs-Company}—identifying a valuable problem, structuring
+  the rules of competition, and attracting participants to solve it. A subnet owner's
+  long-term reward is tied directly to the quality and utility of their subnet.
+
+  \item[\textbf{Miners}] are the producers of intelligence. They run computational
+  nodes—models, algorithms, or any software capable of responding to the subnet's
+  task—and compete to provide the best possible output(Based on the Subnet's Incentive Mechanism-Optimizer). Miners are rewarded in \TAO\
+  proportional to the quality of their contributions as assessed by validators.
+  Critically, there is no fixed salary, no tenure, and no bureaucratic review—only
+  verifiable performance.
+
+  \item[\textbf{Validators}] are the quality arbiters of the network. They query
+  miners, evaluate their outputs, and assign score Matrixes that determine the distribution
+  of emissions. Validators stake \TAO\ as collateral, aligning their economic
+  incentives with honest and accurate assessment. A validator that scores dishonestly
+  or carelessly risks losing both reputation and stake.
+
+  \item[\textbf{Stakers (Delegators)}] are the capital layer of the network. Rather
+  than running nodes or evaluating outputs directly, stakers delegate their \TAO\ to
+  validators they trust, earning a proportional share of the validator's emissions in
+  return. Staking serves two functions simultaneously: it \emph{secures the network}
+  by increasing the economic cost of dishonest validation, and it \emph{democratises
+  participation}—allowing anyone who holds \TAO\ to contribute to and benefit from
+  the network's growth without requiring technical expertise. In economic terms,
+  stakers function as \emph{passive capital allocators}, voting with their stake on
+  which validators—and by extension, which subnets—deserve to grow.
+\end{description}
+
+
+\subsection{Subnets as Companies, Miners as Workers}
+
+The most intuitive analogy for understanding Bittensor's structure is that of a
+\textbf{decentralized labour market}~[8,10]. Each subnet functions like an independent
+company: it has a defined purpose, a set of performance standards, and a budget—
+denominated in \TAO\ emissions—that it distributes to those who contribute most
+effectively.\\[0.4cm]
+
+Miners operate within this structure as workers—but workers in a fundamentally
+different sense from the conventional employment model. There is no hiring process as we know it,
+no geographic restriction, and no fixed compensation. A miner anywhere in the world
+can join any subnet, deploy a node, and begin earning immediately if their
+contribution meets the network's standard and thus producing Intelligence. The incentive is direct, transparent,
+and proportional to output~[7].\\[0.4cm]
+
+This stands in sharp contrast to the centralised firm, where compensation is
+decoupled from marginal contribution, and where institutional friction—interviews,
+hierarchies, HR departments—interposes itself between talent and reward. On
+Bittensor, \textbf{the market itself is the employer, and performance is the
+only credential that matters}~[3,8].
+
+\subsection{How Bittensor Differs from Traditional Blockchain Architectures}
+
+Bittensor's relationship with its participants is fundamentally unlike that of
+Bitcoin, Ethereum, or any conventional blockchain network~[3,25]. In traditional systems,
+miners and validators perform a \textbf{fixed, well-defined task}: hash a block,
+validate a transaction, attest to a slot. The work is repetitive, standardised,
+and does not require constant adaptation over time. A Bitcoin miner running the same
+hardware and software in 2015 and in 2025 is performing essentially the same
+operation~[1].\\[0.4cm]
+
+Bittensor inverts this entirely. Because each subnet defines its own task—and
+because those tasks are competitive and continuously evolving—\textbf{miners must
+constantly improve their models, update their code, and adapt their nodes} to remain
+competitive~[7,14]. A miner who deploys a model and leaves it unchanged will inevitably be
+outperformed by those who iterate. The network does not reward existence—it rewards
+\emph{improvement}.\\[0.4cm]
+
+The network naturally Searches for participants who understand the problem deeply
+enough to keep improving their solution—transforming the act of participation into
+an ongoing research and development process.\\[0.4cm]
+
+In this sense, Bittensor is less analogous to a blockchain and more analogous to a
+\textbf{living market for intelligence}~[8].
+
+
+\section{Tokenomics}
+\label{sec:tokenomics}
+
+\subsection{The Native Tokens}
+
+Bittensor's economic architecture is anchored by \textbf{\TAO}, the network's native
+token~[16,17]. By design, Bittensor adopts Bitcoin's fair-launch principles: no venture capital
+allocation, no pre-mine, and a \textbf{hard supply cap of 21 million \TAO}. The network is owned by the people
+providing value to it, not by a central board of institutional
+investors. Every \TAO\ in existence was earned through contribution to the network. Subnets also have their own Token called \textbf{Alpha}. it has the exact same tokenomics as \TAO~[12].
+
+\subsection{Halvings}
+
+\subsubsection*{What is a Halving?}
+
+A halving is a pre-programmed event encoded directly into the protocol in which the
+rate of new token emissions is cut in half~[17]. It is not a decision made by any
+authority—it is a mathematical certainty, triggered automatically when a specific
+supply threshold is reached. The purpose is twofold: to enforce \textbf{scarcity}
+as adoption grows, and to transition the network from an incentive-heavy bootstrapping
+phase toward a mature, utility-driven economy. Each halving makes every previously
+earned token more scarce—and therefore, assuming sustained or growing demand,
+more valuable.
+
+\subsubsection*{Two Halving Events in Bittensor}
+
+Uniquely, Bittensor operates with \textbf{two distinct and independent halving
+mechanisms}—one at the network level and one at the subnet level~[12,16]:
+
+\begin{description}
+\item[\textbf{TAO Halving (Network-Level)}] occurs each time TAO Supply doubles. The first
+  TAO halving occurred in \textbf{December 2025}, reducing daily emissions from
+  \textbf{7,200 \TAO} to \textbf{3,600 \TAO}. Subsequent halvings will continue compressing
+  global emissions over time, mirroring Bitcoin's deflationary monetary trajectory.
+
+  \item[\textbf{Alpha Token Halving (Subnet-Level)}] occurs each time a specific subnet's
+  Supply doubles. It is \textbf{independent}—triggered not by a global clock, but by that
+  subnet's own internal supply milestone. This means that older, more established subnets
+  with larger circulating supplies have possibly already halved more times than newer
+  Subnets—creating a natural \emph{lifecycle} for each subnet's economy.
+\end{description}
+
+This dual-halving architecture means that scarcity operates at two levels
+simultaneously: globally across the entire Bittensor network, and locally within
+each individual subnet market. The result is a richly layered deflationary system
+in which both \TAO\ and each subnet's Alpha token are subject to their own
+independent supply constraints—aligning long-term incentives for every participant
+at every level of the network~[16,19].
+
+
+\subsection{Emissions}
+
+Emissions are the mechanism by which new \TAO\ is introduced into circulation~[11].
+Rather than being minted arbitrarily or distributed by a central authority,
+emissions are \textbf{algorithmically released}(3600 \TAO\ each day currently) by the protocol at a fixed rate
+and allocated directly to network participants based on their verified contribution.\\[0.4cm]
+
+Every block produced on the Bittensor blockchain generates a fixed quantity of
+new \TAO, which flows first to the \textbf{root network}—the top-level
+layer—and is then allocated downward to individual subnets proportional to the
+amount of \TAO\ staked into each subnet's pool. A subnet that attracts more
+staked capital receives a larger share of the global emissions. This creates a
+direct market signal: \textbf{capital flows toward subnets producing genuine
+utility} (just like in our own capitalistic economy), and emissions follow capital~[11,16].\\[0.4cm]
+
+Within each subnet, received emissions are then distributed among its four
+productive participants—subnet owners, miners, validators and stakers. Emissions therefore serve not only as a
+monetary policy tool, but as the \textbf{primary incentive signal} of the
+entire network: every participant, at every level, is working to maximise
+their share of the next block's emission and get rewarded more than the others~[11].
+
+\subsection{Emission Distribution}
+
+Emissions flowing into each subnet are then split in half. Half are given to the
+Subnet's \TAO\ pool and the rest 50\% are allocated across participants according to
+Default protocol-level proportions~[16]:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{p{3.5cm} p{2cm} p{7.5cm}}
+\toprule
+\textbf{Participant} & \textbf{Share} & \textbf{Role} \\
+\midrule
+Subnet Owner  & 18\% & Maintains infrastructure and incentive mechanism \\
+Miners        & 41\% & Produce the computational work and intelligence \\
+Validators    & 41\% & Score miners and distribute rewards via weighted consensus \\
+Stakers       & -    & Stake their \TAO \ with a Validator showing Trust and also receiving \TAO\ from him.\\
+\bottomrule
+\end{tabular}
+\caption{TAO emission distribution per subnet.}
+\label{tab:emissions}
+\end{table}
+
+\noindent Stakers earn indirectly through validators—receiving a proportional share
+of the validator's 41\% allocation, minus a validator fee typically set at 18\%. Note that those Percentages are set by Default but they can change from the Subnet Owner~[11,16].
+
+\subsection{Subnet Alpha Tokens (\texorpdfstring{$\alpha$}{alpha})}
+
+With the introduction of \textbf{Dynamic TAO}~[12,19], each subnet was assigned its own
+native token—the \textbf{Alpha token ($\alpha$)}—also hard-capped at 21 million
+units. This created a two-layer economic architecture: \TAO\ as the global reserve
+currency of the network, and Alpha tokens as subnet-level instruments that reflect
+the specific utility and demand of each subnet's market.\\[0.4cm]
+
+Each subnet operates an internal \textbf{Automated Market Maker (AMM)}—analogous
+to a Uniswap liquidity pool—through which participants exchange \TAO\ for a subnet's
+Alpha tokens (unlike traditional markets that rely on an order book). The price of
+a subnet's Alpha token is determined entirely by market forces, governed by the
+\textbf{constant product formula}~[10,12]:
+
+\[
+  k = \tau_{\text{pool}} \times \alpha_{\text{pool}}
+\]
+
+Where $k$ is a constant, $\TAO_{\text{pool}}$ is the amount of \TAO\ in the pool,
+and $\alpha_{\text{pool}}$ is the amount of Alpha tokens in the pool. The spot price
+of one Alpha token in terms of \TAO\ is therefore:
+
+\[
+  P_{\alpha} = \frac{\tau_{\text{pool}}}{\alpha_{\text{pool}}}
+\]
+
+When a participant stakes \TAO\ into the pool, $\TAO_{\text{pool}}$ increases,
+$\alpha_{\text{pool}}$ decreases, and the price of Alpha rises. When they
+unstake, the reverse occurs. No counterparty is needed—the math is the
+market maker~[12].\\[0.4cm]
+
+This mechanism transforms subnet valuation into a \emph{continuous market
+referendum} on which subnets are producing genuine utility: capital flows
+in, price rises, emissions follow~[19].
+
+The implications are significant. Capital flows naturally toward high-performing
+subnets, increasing their Alpha token price and attracting more miners and validators.
+Underperforming subnets face capital outflows, reduced emissions, and competitive
+pressure to improve or be replaced. \textbf{The market itself becomes the Price regulator}~[12,19].
+
+
+
+\section{Yuma Consensus}
+
+Yuma Consensus is the mechanism Bittensor uses to determine \textbf{who gets paid
+and how much}~[9,15]. It is not a block-production consensus like Bitcoin's Proof-of-Work
+or Ethereum's Proof-of-Stake. Its sole purpose is to produce a \textbf{fair,
+manipulation-resistant distribution of emissions} across miners—based on the
+collective judgement of validators~[9,18].\\[0.4cm]
+
+\subsubsection*{How It Works}
+
+Yuma Consensus runs in five sequential steps each tempo~[9,13]:
+
+\textbf{Step 1 — Stake Normalisation}\\
+Each validator's stake is normalised so all stakes sum to 1:
+\[
+  s_v = \frac{\tau_v}{\sum_{v} \tau_v}
+\]
+
+\textbf{Step 2 — Rank}\\
+Each miner receives a rank: the stake-weighted sum of all validator scores:
+\[
+  R_m = \sum_{v} s_v \cdot W_{v,m}
+\]
+
+\textbf{Step 3 — Trust}\\
+A miner's trust reflects how consistently validators agree on their quality:
+\[
+  T_m = \sum_{v} s_v \cdot \mathbb{1}\left[W_{v,m} > 0\right]
+\]
+A miner scored by more high-stake validators has higher trust~[9].\\[0.4cm]
+
+\textbf{Step 4 — Incentive}\\
+A miner's final emission share combines rank and trust:
+\[
+  I_m = R_m \cdot T_m
+\]
+
+\textbf{Step 5 — Validator Dividends}\\
+Each validator's reward is proportional to their bond-weighted share of miner incentives:
+\[
+  D_v = \sum_{m} B_{v,m} \cdot I_m
+\]
+
+\noindent Each step builds on the previous — stake determines rank, rank combined
+with trust determines incentive, and bonds determine how much of that incentive
+each validator captures~[9,13,15].
+
+\subsubsection*{Yuma Outputs}
+
+Yuma Consensus produces two distinct outputs every tempo:
+
+\textbf{Miners} — Incentives are determined purely by rank and trust:
+\[
+  I_m = R_m \cdot T_m
+\]
+A miner cannot influence their bonds—only their output quality, which drives both
+their rank and the consistency with which validators score them.\\[0.4cm]
+
+\textbf{Validators} — Dividends are determined by their bond-weighted share of miner incentives:
+\[
+  D_v = \sum_{m} B_{v,m} \cdot I_m
+\]
+Bonds reward validators who independently discover high-performing miners
+early. A validator who scores a great miner before everyone else builds a strong
+bond—and captures a larger share of that miner's incentive stream as a result.\\[0.4cm]
+
+Subnet owners and stakers are paid outside of Yuma entirely. The owner's 18\% is a
+fixed protocol cut taken before Yuma runs. Stakers earn proportionally from their
+delegated validator's dividend, minus the validator's fee.
+
+\subsubsection*{Why It Is Manipulation-Resistant}
+
+The critical insight of Yuma Consensus is that it \textbf{penalises validators
+who deviate from the consensus}~[9,15]. A validator that assigns weights very differently
+from the rest of the validator set—whether out of dishonesty, collusion, or
+negligence—receives reduced emissions themselves. This creates a powerful
+self-correcting dynamic:
+
+\begin{itemize}
+  \item Honest validators who assess miners accurately are rewarded.
+  \item Validators who attempt to artificially boost specific miners at the
+        expense of others are penalised.
+  \item Collusion requires controlling a majority of stake—making attacks
+        economically expensive~[15,25].
+  \item Weight Copying is economically not viable and it is penalized.
+\end{itemize}
+
+\noindent\textit{Note: Validators Weight-Copying method is only viable if the Subnet is
+constantly not improving which means a better subnet will come and dethrone it.}\\[0.4cm]
+
+\subsubsection*{In Simple Terms}
+
+Yuma Consensus can be understood as a \textbf{stake-weighted peer review system}~[9,18].
+Validators are the reviewers, miners are the researchers, and \TAO\ emissions are
+the funding. The network rewards work that the majority of trusted reviewers
+agree is valuable—and punishes anyone who tries to game the review process.
+The result is a system where \textbf{honesty is the most profitable strategy}~[9].
+
+
+\subsection{Dynamic TAO}
+
+Prior to Dynamic TAO, the allocation of emissions across subnets was determined
+by a small set of root network validators—a centralised bottleneck that created
+political pressure and misaligned incentives at the top level of the network~[19].\\[0.4cm]
+
+\textbf{Dynamic TAO removed this bottleneck entirely}~[12,19]. Subnet emission allocation
+is now determined by the market itself—specifically, by how much \TAO\ is staked
+into each subnet's Alpha token pool. More staked \TAO\ means a higher subnet
+valuation, which means a larger share of global emissions.\\[0.4cm]
+
+In simple terms: \textbf{the market votes with capital}~[12]. Subnets that produce
+genuine utility attract stakers, which increases their emissions, which attracts
+better miners and validators—a self-reinforcing cycle of quality improvement.
+Subnets that fail to deliver lose capital, lose emissions, and are forced to
+improve or die~[19].
+
+\subsubsection*{TAO Flow: From Protocol to Participant}
+
+Bittensor currently emits approximately \textbf{0.5 \TAO\ per block}~[11,17]. With a block time of
+approximately 12 seconds and a \textbf{tempo} of 360 blocks, this produces:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lll}
+\toprule
+\textbf{Period} & \textbf{Pre-Halving} & \textbf{Post-Halving (Dec 2025)} \\
+\midrule
+Per Block  & 1.0 \TAO   & 0.5 \TAO   \\
+Per Tempo (360 blocks) & 360 \TAO  & 180 \TAO   \\
+Per Day (7,200 blocks) & 7,200 \TAO & 3,600 \TAO \\
+\bottomrule
+\end{tabular}
+\caption{TAO emission rates before and after the first halving.}
+\label{tab:emissions_rate}
+\end{table}
+
+\noindent These emissions flow through the network in three distinct stages~[11,12]:
+
+\begin{description}
+  \item[\textbf{Stage 1 — Root Network}] Every block, the protocol mints
+  new \TAO\ and delivers it to the \textbf{root network}. The root network
+  then allocates this \TAO\ across all active subnets that deserve it. Under Dynamic TAO,
+  each subnet's share is determined entirely by how much \TAO\ is staked
+  into its Alpha pool relative to the total staked across all subnets~[12]:
+
+  \[
+    \text{Subnet Emission Share} = \frac{\text{TAO staked in subnet pool}}
+    {\text{Total TAO staked across all subnets}}
+  \]
+
+  A subnet with 10\% of total network stake receives 10\% of that block's
+  global \TAO\ emissions. There is no committee, no vote—only capital.
+
+  \item[\textbf{Stage 2 — Subnet Level}] The \TAO\ allocated to a subnet
+  is converted into that subnet's \textbf{Alpha tokens} via its internal
+  AMM pool and distributed among the subnet's productive participants
+  according to Yuma Consensus~[9,11].
+
+  \item[\textbf{Stage 3 — Individual Participants}] Within the miner and
+  validator pools, emissions are not distributed equally—they are distributed
+  \textbf{proportionally to performance}~[11]. A miner's share of the 41\% is
+  determined by their Yuma Consensus score. A validator's share of the 41\%
+  is determined by the amount of \TAO\ staked to them. Stakers receive their
+  cut from the validator's allocation, minus the validator's fee.
+\end{description}
+
+
+\section{Considerations}
+\label{sec:considerations}
+
+
+
+No decentralised network is immune to adversarial behaviour~[25]. Bittensor's design
+anticipates the rational self-interest of every participant and encodes solutions
+directly into its economic architecture. The following are the most significant
+challenges the network faces—and how the protocol handles each~[14].
+
+
+
+\subsection*{Part I — Addressed by Protocol Design}
+\subsection{Weight Copying}
+
+\subsubsection*{The Problem}
+
+Weight copying is the most pervasive attack on Bittensor's validator layer~[14].
+Rather than performing the computationally expensive work of querying miners,
+evaluating their outputs, and forming independent judgements, a lazy or malicious
+validator simply \textbf{copies the weights submitted by another validator}.
+This is economically rational in the short term: the validator receives emissions
+without doing any real work.\\[0.4cm]
+
+If left unchecked, weight copying would cause the entire validator layer to
+converge on a single set of weights—undermining the diversity of evaluation that
+makes Yuma Consensus meaningful, and effectively centralising the network's
+judgement into whoever is being copied~[9,15].
+
+\subsubsection*{The Solution: Bonds}
+
+Bittensor addresses weight copying through a \textbf{bonds mechanism}~[9,13]. Each
+validator accumulates a bond in every miner they score. A bond represents a
+validator's historical commitment to a miner—built up over time through
+consistent, independent evaluation.\\[0.4cm]
+
+The bond of validator $v$ in miner $m$ at time $t$ is updated as~[9,13]:
+
+\[
+  B_{v,m}^{(t)} = (1 - \alpha) \cdot B_{v,m}^{(t-1)} + \alpha \cdot W_{v,m}^{(t)}
+\]
+
+Where:
+\begin{itemize}
+  \item $B_{v,m}^{(t)}$ is the bond of validator $v$ in miner $m$ at time $t$
+  \item $W_{v,m}^{(t)}$ is the weight validator $v$ assigned to miner $m$ at time $t$
+  \item $\alpha$ is the bond moving average decay rate
+\end{itemize}
+
+\vspace{0.4cm}
+The validator's share of emissions is then proportional not just to their stake,
+but to their \textbf{bond-weighted consensus score}~[9]:
+
+\[
+  \text{Validator Dividend}_{v} \propto \sum_{m} B_{v,m} \cdot C_{m}
+\]
+
+Where $C_{m}$ is the consensus score of miner $m$.\\[0.4cm]
+
+The critical implication is this: \textbf{a validator who copies weights builds
+no independent bonds}~[9,14]. They accumulate the same bonds as whoever they are copying—
+but always with a lag. When a genuinely useful new miner enters the network, the
+validator who discovers them first and scores them highly builds a bond immediately.
+The copier, by definition, is always late. Early bond accumulation in high-performing
+miners translates directly into higher long-term dividends—making \textbf{independent
+discovery the most profitable strategy}.
+
+\subsection{Validator Collusion}
+
+\subsubsection*{The Problem}
+
+A group of validators could theoretically collude to artificially inflate the
+scores of specific miners—miners they control—concentrating emissions among
+themselves and excluding legitimate competitors~[15,25].
+
+\subsubsection*{The Solution: Stake-Weighted Consensus}
+
+Yuma Consensus computes each miner's final score as a \textbf{stake-weighted
+median} of all validator weight submissions~[9,15]:
+
+\[
+  C_{m} = \text{WeightedMedian}_{v}\left(W_{v,m},\ \tau_{v}\right)
+\]
+
+Where $\tau_{v}$ is the total stake of validator $v$. The median—rather than
+the mean—is used precisely because it is \textbf{resistant to outliers}. A
+colluding minority cannot pull the consensus score significantly unless they
+control a majority of total stake. Acquiring that majority stake is
+prohibitively expensive, making large-scale collusion economically irrational~[9].
+
+\subsection{Miner Feedback Gaming}
+
+\subsubsection*{The Problem}
+
+A miner could attempt to identify which validator is querying them and return
+artificially high-quality responses only to that validator—gaming their score
+without consistently performing well for actual users of the subnet~[14].
+
+\subsubsection*{The Solution: Validator Anonymity and Randomisation}
+
+Validators are not required to identify themselves when querying miners~[14].
+Queries are randomised in timing and structure, making it statistically
+difficult for a miner to reliably distinguish a validator query from a
+genuine user request. A miner that attempts selective performance must
+essentially perform well \emph{all the time}—which is indistinguishable
+from simply being a good miner.
+
+\subsection{Subnet Owner Misalignment}
+
+\subsubsection*{The Problem}
+
+A subnet owner could design a poor or deliberately skewed incentive mechanism
+that rewards low-quality miners—friends, sockpuppets, or their own nodes—
+capturing the 18\% owner emission share without producing genuine utility~[14].
+
+\subsubsection*{The Solution: Market Discipline via Dynamic TAO}
+
+Under Dynamic TAO, a subnet's emission share is determined by how much \TAO\
+is staked into its pool~[12,19]. A subnet producing no genuine utility attracts no
+stakers—its Alpha token price stagnates or falls, its emission share shrinks,
+and it becomes economically unviable. The subnet owner's 18\% of a shrinking
+emission stream is worth less than an honest owner's 18\% of a growing one.\\[0.4cm]
+
+\textbf{The market punishes bad subnet design automatically}—no governance
+intervention required~[19].
+
+\subsection{Summary: Incentive Alignment Across All Participants}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{p{2.8cm} p{3.5cm} p{3.5cm} p{3.5cm}}
+\toprule
+\textbf{Participant} & \textbf{Optimal Behaviour} & \textbf{Attack / Laziness}
+& \textbf{Consequence} \\
+\midrule
+\textbf{Miner} & Produce best outputs consistently & Game validator queries
+& Detected via randomisation, scores drop \\
+\textbf{Validator} & Independently evaluate miners & Copy weights
+& No bond accumulation, lower dividends \\
+\textbf{Staker} & Delegate to best validator & Back dishonest validator
+& Reduced returns as validator loses influence \\
+\textbf{Subnet Owner} & Design strong incentive mechanism & Reward fake miners
+& Capital flight, emission share collapses \\
+\bottomrule
+\end{tabular}
+\caption{Incentive alignment and consequences across all network participants.}
+\label{tab:incentives}
+\end{table}
+
+\noindent In every case, the protocol makes \textbf{honesty and excellence the
+most profitable strategy}—not through moral appeal, but through mathematics and
+market forces~[9,14].
+
+
+\subsection*{Part II — Ongoing Challenges}
+\subsection{Registration Costs as Barrier to Entry}
+
+Registering a subnet, miner UID, or validator hotkey requires a dynamic \TAO\ fee
+that is burned upon payment—rising with demand. At peak activity, subnet
+registration has exceeded 100 \TAO, equivalent to thousands of dollars at market
+price. This creates a de facto economic barrier that contradicts the network's
+permissionless ideals—favouring well-capitalised participants over talented but
+under-resourced ones.~[7,14]
+
+\subsection{Centralisation Through Coordinated Entry}
+
+Nothing prevents a well-resourced organisation from entering a subnet as a coordinated
+team—bringing superior compute, proprietary models, and institutional expertise
+simultaneously. A frontier AI lab entering together could dominate validator scoring,
+accumulate bonds before any competitor responds, and capture the majority of
+emissions—recreating the centralised dominance the protocol was designed to prevent.\\[0.4cm]
+
+As emission rewards grow, the incentive for large players to enter increases
+proportionally. The network's long-term defence against this is the same as Linux
+against proprietary software: not any single contributor, but the aggregate force
+of an open, globally distributed, incentivised community.
+
+\subsection{Opentensor Foundation Centralisation Risk}
+
+Despite its decentralised architecture, Bittensor's protocol upgrades still depend on
+the Opentensor Foundation—a centralised entity. The Foundation controls the
+Triumvirate, which initiates all runtime changes. There is no technical guarantee
+they follow through on their commitment to fully decentralise governance. Until the
+Triumvirate is dissolved and on-chain governance is fully community-driven, a single
+organisation retains the ability to alter the rules the entire network operates under.
+
+\subsection{Network Capacity Limits}
+
+Bittensor is currently capped at 128 subnets, each with a maximum of 256 UIDs—64
+validators and 192 miners. As the network grows, these limits become structural
+bottlenecks. While the cap is a deliberate design choice with plans to increase limits
+in later halvings, it currently constrains the very open participation the protocol
+promises.
+
+\subsection{Incentive Mechanism Quality and the Oracle Problem}
+
+Any participant can register a subnet and design its incentive mechanism. There is
+no upfront quality filter—a poorly designed or trivially gameable scoring function
+can reward the wrong behaviour entirely, wasting emissions on low-quality output.
+This is compounded by the oracle problem: for complex tasks such as reasoning or
+code generation, objectively scoring miner output is genuinely difficult. The market
+eventually punishes bad subnet design—but not before emissions are wasted.
+
+
+
+
+
+% ============================================================
+%  CHAPTER 3 — SUBNETS
+% ============================================================
+\section{Subnets}
+\label{chap:subnets}
+
+\subsection{What is a Subnet?}
+
+A Subnet is a \textbf{specialised, self-contained competitive market} built on
+top of the Bittensor protocol, dedicated to a specific computational task or
+digital commodity~[10]. If Bittensor is the global brain, a subnet is a specific
+functional lobe—purpose-built, independently governed, and ruthlessly competitive.\\[0.4cm]
+
+Each subnet defines its own problem, its own metric of success, and its own
+incentive mechanism. Miners compete to solve the problem. Validators judge the
+quality of solutions. Emissions reward the winners. There is no fixed salary,
+no guaranteed participation, and no protection from being outperformed~[7,10].\\[0.4cm]
+
+This architecture deliberately mirrors \textbf{Darwinian natural selection}.
+Every tempo, every miner's output is evaluated and scored. Those who perform
+best capture the largest share of emissions. Those who fall behind receive less
+and less until participation becomes economically unviable. There is no tenure,
+no loyalty reward, and no institutional protection. The subnet does not care
+who you are—only what you produce. Models that do not improve are replaced by
+models that do. Subnets that do not attract capital and talent stagnate and
+die~[10,26].\\[0.4cm]
+
+
+
+This is not a metaphor. It is the \textbf{literal economic structure} of the
+network: continuous selection pressure, applied every twelve seconds, across
+every subnet simultaneously. The result is a system that grows more capable
+over time not because anyone planned it to, but because the incentive structure
+makes improvement the only rational long-term strategy~[3,8].\\
+
+
+\noindent\textbf{Note:} There are 256 participants Max per Subnet (Currently). Per subnet, by default:\\
+Total UIDs: 256 (all participants combined)\\
+Validators: up to 64 slots (top 64 by emissions get validator permits)\\
+Miners: up to 192 slots (remaining 256 - 64).\\
+In practice most subnets have only 5--15 active validators — the 64 is just the maximum
+ceiling. Unused validator slots are automatically available to miners. The subnet owner
+can change these via the \texttt{max\_validators} hyperparameter.\\[0.4cm]
+
+
+\subsection{How Subnets Should Work}
+
+A well-functioning subnet follows a clear operational logic~[10]. The subnet owner
+defines a \textbf{precise, measurable task}—one where good and bad outputs can
+be objectively distinguished. Validators query miners, score their outputs
+according to the owner's incentive mechanism, and submit weights to the
+blockchain. Yuma Consensus aggregates those weights into consensus scores, and
+emissions flow to miners proportionally~[9,11].\\[0.4cm]
+
+The quality of a subnet is almost entirely determined by the quality of its
+\textbf{incentive mechanism}~[14]. A well-designed mechanism creates a virtuous
+cycle: clear evaluation criteria attract serious miners, serious miners produce
+high-quality outputs, high-quality outputs attract stakers, stakers increase
+the subnet's emission share, and higher emissions attract even better miners.
+Conversely, a poorly designed mechanism—one with ambiguous scoring, gameable
+metrics, or misaligned rewards—produces a race to the bottom.\\[0.4cm]
+
+The subnet owner's 18\% emission share is therefore not passive income. It is
+a \textbf{continuous incentive to maintain and improve the mechanism}~[11,16]. An owner
+who neglects their subnet watches its Alpha token price fall, its emission share
+shrink, and its best miners migrate to more rewarding subnets.
+
+\subsection{Subnet Lifecycle}
+
+\textbf{Registration.} Any participant can register a new subnet by paying a
+registration fee denominated in \TAO. This fee is burned, reducing circulating
+supply. As demand for subnet slots grows, the registration cost increases
+dynamically—ensuring that only subnets with genuine economic conviction enter
+the network~[7,10].\\[0.4cm]
+
+\textbf{Bootstrapping.} A newly registered subnet begins with zero miners,
+zero validators, and zero staked capital. The subnet owner must attract
+participants by designing a compelling incentive mechanism and demonstrating
+the utility of the task. Early emissions are low, but so is competition—
+creating an opportunity window for early miners to accumulate bonds and
+establish dominance~[10].\\[0.4cm]
+
+\textbf{Growth.} As the subnet proves its utility, stakers allocate \TAO\
+to its Alpha pool. Its emission share grows. More miners and validators
+register. Competition intensifies. The quality of outputs improves. The
+Alpha token price rises as a market signal of the subnet's value to the
+broader network~[12,19].\\[0.4cm]
+
+\textbf{Maturity.} A mature subnet operates as a stable, competitive market
+with established validators, a diverse miner set, and consistent output
+quality. Its Alpha token has undergone at least one halving, signalling that
+a significant portion of its supply has been distributed to productive
+participants~[16,26].\\[0.4cm]
+
+\textbf{Death.} The network is capped at 128 subnets (Currently). When a new subnet
+attempts to register and the cap is reached, the protocol automatically identifies the
+weakest existing subnet using its EMA (Exponential Moving Average) price:
+
+\[
+  \text{EMA}(t) = \alpha \times P^{(t)} + (1 - \alpha) \times \text{EMA}^{(t-1)}
+\]
+
+The subnet with the lowest EMA price outside its immunity period is deregistered.
+New subnets receive a 4-month immunity period during which they cannot be deregistered.
+Upon deregistration, all Alpha tokens in the subnet's pool are liquidated and the
+underlying \TAO\ is distributed proportionally to Alpha holders. The subnet owner
+receives their registration lock cost back, minus the emissions they already received.
+The market has rendered its verdict—automatically, mathematically, and without appeal.\\[0.4cm]
+
+\subsection{Notable Subnets}
+
+\subsection*{Subnet 62 — Ridges (Autonomous Software Engineering)}
+Developed by \textbf{Ridges AI}, Subnet 62 tackles one of the most complex
+problems in the digital economy: \textbf{autonomous software engineering}.
+Miners deploy fully autonomous coding agents that compete to write, test,
+and debug real software in response to engineering challenges—evaluated
+purely on output quality. Unlike proprietary code assistants such as GitHub
+Copilot or Cursor, Ridges is an open, permissionless meritocracy: the best
+autonomous engineer wins, regardless of who built it or where in the world
+they are. Ridges is built directly on top of Chutes (Subnet 64), using its
+decentralised compute layer as infrastructure—demonstrating how subnets can
+compose and build upon one another, forming a layered ecosystem of
+specialised intelligence~[26].
+
+\subsection*{Subnet 64 — Chutes (Decentralized AI Compute)}
+Developed by \textbf{Rayon Labs}, Chutes is the \textbf{largest subnet on
+Bittensor by market capitalisation} and one of the clearest demonstrations
+of product-market fit in the entire ecosystem~[20,21]. It operates as a decentralised,
+serverless AI compute platform—allowing developers to deploy and run any
+open-source AI model via a standard API in seconds, with no infrastructure
+management required.\\[0.4cm]
+
+Chutes is a direct and economically superior alternative to centralised cloud
+AI providers, delivering inference at approximately \textbf{85\% lower cost
+than AWS} for comparable tasks~[21]. As of 2025, Chutes ranked as the
+\textbf{number one inference provider by usage on OpenRouter}—the world's
+most widely used AI model aggregation platform—placing it ahead of all
+centralised providers including Anthropic, OpenAI, and Google~[20,22]. Miners are
+GPU owners who earn \TAO\ for serving models reliably and efficiently;
+the better their performance, the greater their emission share.
+
+\subsection*{Subnet 3 — Templar (Decentralized AI Training)}
+Templar is arguably the most ambitious subnet in Bittensor's history and
+one of the most significant experiments in decentralised AI globally~[23]. Its
+mission is to become the world's best \textbf{decentralised model training
+platform}: miners contribute GPU compute and gradient updates toward the
+continuous, collaborative training of large-scale models, rewarded based
+on the quality of their contribution to reducing model loss.\\[0.4cm]
+
+In 2025, Templar achieved what had never been accomplished in either
+cryptocurrency or AI: the fully decentralised training of
+\textbf{Covenant-72B}—a 72 billion parameter model trained across globally
+distributed GPUs with no central server, no datacentre, and no single
+coordinating authority, operating at approximately $9 \times 10^{17}$
+FLOP/s—making it the largest active decentralised training network ever
+recorded~[23,24].\\[0.4cm]
+
+The significance was not lost on the broader AI community. \textbf{Jack Clark},
+co-founder of \textbf{Anthropic}, specifically highlighted Templar as the
+leading proof that incentive-driven, permissionless model training at scale
+is not only theoretically possible—but already
+happening~[24].
+
+\subsection*{Subnet 44 — Score (Decentralized Sports Intelligence)}
+\textbf{Score} is a decentralised computer vision platform built on Bittensor,
+dedicated to collecting, annotating, and analysing football data at scale~[26].
+Miners receive live video streams of football matches and compete to track
+player movements, ball positions, and game events in real time using object
+detection and keypoint analysis—producing structured, machine-readable
+match data evaluated by validators for accuracy and speed.\\[0.4cm]
+
+The problem Score solves is a real one: a single professional football match
+currently requires hundreds of hours of manual annotation at a cost of
+thousands of dollars. Score aims to reduce this by \textbf{10x to 100x}
+while dramatically improving speed and accuracy—making the kind of
+high-quality analytics previously reserved for elite clubs accessible to
+any team, scout, or analyst in the world. With partnerships spanning
+\textbf{283 leagues and 400,000 matches} of footage, and a fantasy sports
+application planned for the \textbf{2026 World Cup}, Score demonstrates
+that Bittensor's incentive architecture is not limited to language
+models—it can be applied to any domain where quality, speed, and scale
+of data processing matters~[26].
+
+\subsection{Configurable Subnet Variables}
+
+One of Bittensor's most powerful design features is that subnet owners are
+not locked into a fixed architecture~[7]. A range of \textbf{hyperparameters}
+can be adjusted by the subnet owner to tune the competitive dynamics of their
+subnet~[10]:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{p{4.5cm} p{8.5cm}}
+\toprule
+\textbf{Parameter} & \textbf{Description} \\
+\midrule
+\texttt{tempo} & Number of blocks per scoring round. Controls how frequently
+emissions are distributed and weights are updated. \\
+\texttt{max\_n} & Maximum number of miners permitted in the subnet. Controls
+competition density. \\
+\texttt{min\_allowed\_weights} & Minimum weight a validator must assign.
+Prevents validators from zeroing out miners entirely. \\
+\texttt{max\_weight\_limit} & Maximum weight a validator can assign to a
+single miner. Prevents winner-takes-all concentration. \\
+\texttt{immunity\_period} & Number of blocks a new miner is protected from
+deregistration. Gives new entrants time to establish performance. \\
+\texttt{bonds\_moving\_avg} & The decay rate $\alpha$ in the bond update
+formula. Controls how quickly validators build or lose bonds in miners. \\
+\texttt{owner\_cut} & The subnet owner's share of emissions. Protocol default
+is 18\%. \\
+\texttt{validator\_permit\_threshold} & Minimum stake required to act as a
+validator with scoring weight. Default is 1,000 \TAO. \\
+\bottomrule
+\end{tabular}
+\caption{Configurable subnet hyperparameters.}
+\label{tab:hyperparams}
+\end{table}
+
+\noindent These parameters give subnet owners precise control over the
+competitive dynamics of their market—balancing openness to new entrants,
+protection against gaming, and the speed at which the network adapts to
+new information. Getting these parameters right is as much an art as a
+science, and represents one of the most active areas of subnet research
+and iteration in the ecosystem~[10,14].
+
+
+\section{Governance}
+\label{sec:governance}
+
+Bittensor separates two distinct layers of operation that are often conflated: network
+participation and protocol governance. Mining, validating, staking, and subnet
+operation are all governed automatically by the protocol—by mathematics, consensus,
+and market forces. No human decision is required for emissions to flow, miners to be
+scored, or subnets to compete. The network runs itself.~[7],~[28] \\[0.4cm]
+
+Protocol governance—changes to the underlying rules of the network itself—operates
+through a separate bicameral legislature composed of two bodies:\\[0.4cm]
+
+\textbf{The Triumvirate} consists of three members from the Opentensor Foundation.
+It is responsible for drafting and submitting proposals for protocol changes. It cannot
+act unilaterally—every proposal requires Senate approval before execution.\\[0.4cm]
+
+\textbf{The Senate} is composed of up to the top 12 delegate hotkeys by stake weight.
+Senators vote on proposals submitted by the Triumvirate. A proposal passes only when
+it receives a majority of Senate approvals ($>50\%$), after which a Triumvirate member
+executes it on-chain.\\[0.4cm]
+
+This structure ensures that no single party can unilaterally change the protocol.
+The foundation can propose but not execute without community approval. The Senate
+can block but not propose. Both chambers must agree.\\[0.4cm]
+
+This governance model is explicitly designed as a transitional architecture. As
+the network matures, the goal is to phase out the Triumvirate entirely and transition
+to fully community-driven governance. Governance, like everything else on Bittensor,
+is on a trajectory toward full decentralisation.\\[0.4cm]
+
+Governance controls changes to the \textbf{runtime}—the core logic encoded into the
+Bittensor blockchain (Subtensor) that defines everything from emission schedules and
+subnet registration costs to consensus parameters and hyperparameter bounds. A runtime
+upgrade is the blockchain equivalent of changing the constitution.
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ============================================================
+%  CHAPTER 4 — MINING IMPLEMENTATION
+% ============================================================
+% ============================================================
+%  CHAPTER 4 — MINING IMPLEMENTATION
+% ============================================================
+\chapter{Mining Implementation}
+\label{chap:mining}
+
+Contributing as a miner on Bittensor is, at its core, no different from solving
+any real-world Machine Learning problem: define the task precisely, understand
+the data, engineer meaningful features, train and validate candidate models,
+and rigorously evaluate the result before deploying it into production. This
+chapter walks through that exact process, end to end, for the subnet chosen
+for this thesis.
+
+\section{Problem Definition}
+\label{sec:mining-problem}
+
+The subnet selected for this implementation is \textbf{Subnet 32 — itsAI}.
+The subnet's incentive mechanism is built around a single, well-defined task:
+\textbf{AI-generated text detection}. Miners are rewarded for producing models
+capable of accurately distinguishing text written by a human from text
+generated by a large language model, and, where possible, classifying which
+underlying source produced it.\\[0.3cm]
+
+This task was chosen deliberately as a case study for this thesis, since it
+satisfies the core requirement for a well-functioning Bittensor subnet
+discussed in Section~\ref{chap:subnets}: the output is objectively measurable
+(a text sample either is or is not AI-generated), which makes it possible for
+validators to score miner submissions with a clear, non-ambiguous ground
+truth.
+\\[0.3cm]
+
+This Thesis uses the \href{https://github.com/MwkosP/AbstarctML}{AbstractML} Python Library/Framework made for specifically solving Abstracted Machine Leanring Problems with minimal Code and Functions as intended by most ML Engineers. \\
+
+\\Going forward in the next decade deciding weather a Text is AI or not is gonna be incresingly difficult if the correpsonding research isnt implemented, therefore this study/section..
+
+\section{Exploratory Data Analysis (EDA)}
+\label{sec:mining-eda}
+
+The dataset used for this implementation is \textbf{HC3} (Human ChatGPT
+Comparison Corpus), a publicly available dataset pairing human-written and
+ChatGPT-generated answers to the same set of questions.\\[0.3cm]
+
+A first structural inspection of the dataset (\texttt{describeData()})
+confirmed a shape of \textbf{48{,}644 rows across 6 columns} — \texttt{\_split},
+\texttt{id}, \texttt{question}, \texttt{human\_answers}, \texttt{chatgpt\_answers},
+and \texttt{source} — with \texttt{source} standing out as the only column
+carrying missing values.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/fig_describe_data.png}
+\caption{Schema-level description of the HC3 dataset (\texttt{describeData()}).}
+\label{fig:describe-data}
+\end{figure}
+
+A row-level and sample-level inspection (\texttt{viewHead()}, \texttt{viewSample()})
+confirmed the raw structure of the data before any transformation.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/fig_view_head.png}
+\caption{First 10 rows of the raw HC3 dataset.}
+\label{fig:view-head}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/fig_view_sample.png}
+\caption{Random 20-row sample of the raw HC3 dataset.}
+\label{fig:view-sample}
+\end{figure}
+
+Missingness analysis (\texttt{plotMissingness()}) confirmed that only the
+\texttt{source} column contained null values, affecting close to
+\textbf{50\% of all rows}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6.5cm]{images/fig_missingness.png}
+\caption{Missing-value profile across all columns — only \texttt{source} is affected.}
+\label{fig:missingness}
+\end{figure}
+
+A distribution plot of the \texttt{source} column (\texttt{plotDistributions()})
+further revealed that it is highly imbalanced across its non-null classes,
+suggesting the labelled subset may correspond to specific question domains
+rather than being drawn uniformly across the dataset.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6.5cm]{images/fig_source_distribution.png}
+\caption{Class distribution of the \texttt{source} column, including the unlabeled (\texttt{<NA>}) share.}
+\label{fig:source-distribution}
+\end{figure}
+
+Since the missingness was isolated to a single, non-critical column, rows
+with a missing \texttt{source} were retained and treated as an unlabeled
+category rather than dropped.
+
+\section{Preprocessing and Feature Engineering}
+\label{sec:mining-preprocessing}
+
+\subsection*{Handling Missing Values}
+Missing values in the \texttt{source} column were relabelled as an explicit
+\texttt{unknown} class rather than discarded, preserving the full dataset
+while still allowing \texttt{source} to be used as an auxiliary feature.
+
+\subsection*{Label Construction}
+Since the raw dataset stores human and ChatGPT answers in separate columns,
+the data was flattened into a long format with a single unified \texttt{Y}
+(label) column, alongside the corresponding \texttt{X} (text) column — the
+standard supervised-learning shape required for classification.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm]{images/fig_label_flatten.png}
+\caption{Dataset after flattening human/ChatGPT answers into a unified text (\texttt{X}) and label (\texttt{Y}) format.}
+\label{fig:label-flatten}
+\end{figure}
+
+\subsection*{Raw-Text Feature Engineering}
+Before embedding the text, a deliberate decision was made to first extract
+raw, human-interpretable statistics from it. Embeddings compress text into a
+geometric representation that is excellent for similarity and clustering, but
+which hides diagnostic signals that are useful during EDA and model
+debugging. The following features were engineered directly from the raw
+text, grouped by class (AI vs.\ human):
+
+\begin{itemize}
+  \item \textbf{Word count} per answer
+  \item \textbf{Average word length} per answer
+  \item \textbf{Character count} per answer
+  \item \textbf{Duplicate / near-duplicate detection}, since HC3 is known to
+        contain repeated questions across its splits
+  \item \textbf{Vocabulary and style statistics}, including average sentence
+        length and punctuation frequency
+\end{itemize}
+
+These statistics were retained as standalone tabular features and later used
+both for standalone classical models and as auxiliary inputs alongside
+embeddings.
+
+\subsection*{Embedding Generation}
+To enable correlation analysis, outlier detection, and geometric clustering,
+the textual data was converted into numeric embeddings using
+\textbf{\texttt{sentence-transformers/all-MiniLM-L6-v2}}. Embeddings were
+generated separately for the \texttt{question} column and for the
+\texttt{answer} column (covering both human and ChatGPT responses), allowing
+the high-dimensional relationship between questions and their answers to be
+examined.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{images/fig_question_embedding_sample.png}
+\caption{Sample of generated \texttt{question\_embedding} vectors added to the dataset.}
+\label{fig:question-embedding}
+\end{figure}
+
+The same procedure was repeated for the answer columns, producing the final,
+feature-complete version of the dataset used for modelling.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/fig_final_dataset.png}
+\caption{Final engineered dataset — raw text statistics, \texttt{source}, and question/answer embeddings combined.}
+\label{fig:final-dataset}
+\end{figure}
+
+\subsection*{Additional Plotting and EDA on Engineered Features}
+Using \texttt{PlotDataset()} from AbstractML, the answer embeddings were
+projected into 3 dimensions via PCA to visually inspect class separability
+between AI-generated and human-generated answers.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+  \centering
+  \includegraphics[width=6.5cm]{images/fig_pca_3d_answers_view1.png}
+\end{minipage}\hfill
+\begin{minipage}{0.48\textwidth}
+  \centering
+  \includegraphics[width=6.5cm]{images/fig_pca_3d_answers_view2.png}
+\end{minipage}
+\caption{PCA projection of answer embeddings into 3D space — AI vs.\ human, shown from two viewing angles.}
+\label{fig:pca-3d-answers}
+\end{figure}
+
+As Figure~\ref{fig:pca-3d-answers} shows, there is a visually distinguishable
+clustering structure between the two classes even at just 3 principal
+components, with the separation expected to be sharper still in the full,
+higher-dimensional embedding space.
+
+A parallel 3D plot of the raw text statistics (\texttt{word count},
+\texttt{char count}, \texttt{avg word length}) per class was produced for
+comparison.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.48\textwidth}
+  \centering
+  \includegraphics[width=6.5cm]{images/fig_wordstats_3d_view1.png}
+\end{minipage}\hfill
+\begin{minipage}{0.48\textwidth}
+  \centering
+  \includegraphics[width=6.5cm]{images/fig_wordstats_3d_view2.png}
+\end{minipage}
+\caption{3D scatter of raw text statistics (word count, char count, avg.\ word length) by class, from two viewing angles.}
+\label{fig:wordstats-3d}
+\end{figure}
+
+This shows a similarly promising, though less sharp, separation — reinforcing
+that both the engineered raw-text statistics and the semantic embeddings
+carry meaningful class signal on their own.
+
+\section{Train / Validation / Test Split}
+\label{sec:mining-split}
+
+Following feature engineering, the final dataset consisted of
+\textbf{171{,}776 rows}, with every group of three rows corresponding to a
+single question (two human answers and one ChatGPT answer). The dataset was
+split \textbf{80/10/10} into training, validation, and test sets, with
+splitting performed \textbf{at the question level} rather than the row
+level, to prevent any leakage of the same question's answers across splits.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Split} & \textbf{Proportion} & \textbf{Rows} \\
+\midrule
+Train      & 80\% & 137{,}626 \\
+Validation & 10\% & 17{,}038 \\
+Test       & 10\% & 17{,}038 \\
+\bottomrule
+\end{tabular}
+\caption{Train / validation / test split of the processed HC3 dataset.}
+\label{tab:mining-split}
+\end{table}
+
+\section{Initial Model Training}
+\label{sec:mining-models}
+
+Given the primarily textual (NLP) nature of the dataset, a broad range of
+model families was evaluated — spanning classical models (feature-based and with embeddings) ,
+and fine-tuned language models in order to compare performance and generalisation
+capability across paradigms.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{p{4.5cm} p{8.5cm}}
+\toprule
+\textbf{Category} & \textbf{Models} \\
+\midrule
+Classical ML &
+Logistic Regression, Random Forest, Knn, Xgboost   \\
+
+Fine-tuned LM & SetFit (\texttt{sentence-transformers/all-MiniLM-L6-v2}) \\
+\bottomrule
+\end{tabular}
+\caption{Model families and candidates evaluated for AI-text detection.}
+\label{tab:mining-model-families}
+\end{table}
+
+\subsection{Validation Results}
+\label{sec:mining-val-results}
+
+The following figures show each model's metrics and confusion matrix on the
+\textbf{validation split}, before hyperparameter tuning.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_rf_val.png}
+\caption{Random Forest Classifier — validation performance.}
+\label{fig:rf-val}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=6.5cm]{images/fig_logreg_val_1.png}
+\hspace{0.3cm}
+\includegraphics[width=6.5cm]{images/fig_logreg_val_2.png}
+\caption{Logistic Regression & Xgboost — validation performance.}
+\label{fig:logreg-val}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_knn_val.png}
+\caption{KNN Classifier — validation performance.}
+\label{fig:knn-val}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_setfit_val.png}
+\caption{SetFit (fine-tuned MiniLM) — validation performance.}
+\label{fig:setfit-val}
+\end{figure}
+
+
+Section~\ref{sec:mining-test-results}).}
+
+The SetFit fine-tuning run converged with an initial training loss profile of
+\texttt{\{'embedding\_loss': 0.4613, 'grad\_norm': 1.455\}} at the earliest
+recorded checkpoint.
+
+\subsection{Test Results}
+\label{sec:mining-test-results}
+
+The following figures show each model's metrics and confusion matrix on the
+held-out \textbf{test split}, using the same (untuned) models evaluated above.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_rf_test.png}
+\caption{Random Forest Classifier — test performance.}
+\label{fig:rf-test}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_logreg_test.png}
+\caption{Logistic Regression — test performance.}
+\label{fig:logreg-test}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_xgb_test.png}
+\caption{XGBoost Classifier — test performance.}
+\label{fig:xgb-test}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_knn_test.png}
+\caption{KNN Classifier — test performance.}
+\label{fig:knn-test}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/xgboost_test.png}
+\caption{Xgboost  — test performance.}
+\label{fig:setfit-test}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_setfit_test.png}
+\caption{SetFit (fine-tuned MiniLM) — test performance.}
+\label{fig:setfit-test}
+\end{figure}
+
+\section{Hyperparameter Optimisation (HPO)}
+\label{sec:mining-hpo}
+
+To move from baseline models to optimised candidates, both \textbf{Random
+Search} and \textbf{Bayesian Search} were performed over identical,
+pre-defined search spaces for each classical model family, allowing a direct
+comparison of search-strategy efficiency in addition to raw model
+performance.
+
+\subsection{Random Search}
+\subsection*{Logistic Regression}
+\textbf{Search space:}
+\begin{itemize}
+  \item \texttt{C}: log-uniform, range $[0.001, 10.0]$
+  \item \texttt{max\_iter}: $\{500, 1000, 2000\}$
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_hpo_logreg_test.png}
+\caption{Logistic Regression — tuned metrics and confusion matrix on test data.}
+\label{fig:hpo-logreg}
+\end{figure}
+
+\noindent\textbf{Best result (test set):} F1 $= 0.9260$, with
+\texttt{C = 0.7313}, \texttt{max\_iter = 2000}.
+
+\subsection*{Random Forest Classifier}
+\textbf{Search space:}
+\begin{itemize}
+  \item \texttt{n\_estimators}: $\{100, 200, 300\}$
+  \item \texttt{max\_depth}: $\{10, 20, 30, \text{None}\}$
+  \item \texttt{min\_samples\_leaf}: $\{1, 2, 4\}$
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_hpo_rf_test.png}
+\caption{Random Forest Classifier — tuned metrics and confusion matrix on test data.}
+\label{fig:hpo-rf}
+\end{figure}
+
+\noindent\textbf{Best parameters:} \texttt{n\_estimators = 300},
+\texttt{max\_depth = 30}, \texttt{min\_samples\_leaf = 1}.
+
+\subsection*{XGBoost Classifier}
+\textbf{Search space:}
+\begin{itemize}
+  \item \texttt{n\_estimators}: $\{100, 200, 300\}$
+  \item \texttt{max\_depth}: $\{4, 6, 8\}$
+  \item \texttt{learning\_rate}: log-uniform, range $[0.01, 0.2]$
+  \item \texttt{subsample}: $\{0.8, 0.9, 1.0\}$
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/fig_hpo_xgb_test.png}
+\caption{XGBoost Classifier — tuned metrics and confusion matrix on test data.}
+\label{fig:hpo-xgb}
+\end{figure}
+
+\noindent\textbf{Best parameters:} \texttt{n\_estimators = 300},
+\texttt{max\_depth = 8}, \texttt{learning\_rate = 0.1448},
+\texttt{subsample = 0.8}.
+
+\subsection*{KNN Classifier}
+\textbf{Search space:}
+\begin{itemize}
+  \item \texttt{n\_neighbors}: $\{3, 5, 7, 11, 15\}$
+  \item \texttt{weights}: $\{\text{uniform}, \text{distance}\}$
+  \item \texttt{p}: $\{1, 2\}$
+\end{itemize}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{p{4cm} p{9cm}}
+\toprule
+\textbf{Model} & \textbf{Best Hyperparameters} \\
+\midrule
+Logistic Regression & C = 0.7313, max\_iter = 2000 \\
+Random Forest        & n\_estimators = 300, max\_depth = 30,
+min\_samples\_leaf = 1 \\
+XGBoost               & n\_estimators = 300, max\_depth = 8,
+learning\_rate = 0.1448, subsample = 0.8 \\
+KNN                   & \textit{[0.893]} \\
+Setfit                   & \textit{[0.983]} \\
+\bottomrule
+\end{tabular}
+\caption{Summary of best hyperparameters found via search across all tuned models.}
+\label{tab:mining-hpo-summary}
+\end{table}
+
+\subsection{Bayesian Search}
+\subsection*{Logistic Regression}
+\textbf{Same Search spaces were used for both random and Bayesian HPO.}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/bayesian/bayesian_logistiregression_test.png}
+\caption{Logistic Regression — tuned metrics and confusion matrix on test data.}
+\label{fig:hpo-logreg}
+\end{figure}
+
+
+\subsection*{Random Forest Classifier}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/bayesian/bayesian_randomforest_test.png}
+\caption{Random Forest Classifier — tuned metrics and confusion matrix on test data.}
+\label{fig:hpo-rf}
+\end{figure}
+
+
+\subsection*{XGBoost Classifier}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/bayesian/bayesian_xgboost_test.png}
+\caption{XGBoost Classifier — tuned metrics and confusion matrix on test data.}
+\label{fig:hpo-xgb}
+\end{figure}
+
+
+
+\subsection*{Knn Classifier}
+\begin{figure}[H]
+\centering
+\includegraphics[width=7cm]{images/bayesian/bayesian_knn_test.png}
+\caption{Knn Classifier — tuned metrics and confusion matrix on test data.}
+\label{fig:hpo-xgb}
+\end{figure}
+
+
+
+
+
+\section{Final Evaluation and Statistical Significance}
+\label{sec:mining-final-eval}
+
+
+\subsection{Statistical Significance}
+\textit{Using AbstractML's funcs:\\
+getConfidenceInterval( )\\
+testAgainstBaseline()\\
+performCV()
+}\\
+\\
+Across all models and both hyperparameter optimization strategies, test-set
+accuracy and F1 were significantly greater than the random-guess baseline of
+0.5 ($\alpha = 0.05$). For example, the Bayesian-optimized Logistic Regression
+model achieved an accuracy of 0.9264 (95\% CI [0.9224, 0.9302], Wilson
+interval) and an F1 score of 0.9261 (95\% CI [0.9222, 0.9301], bootstrap),
+both significantly above baseline (binomial test, $p < 0.001$; bootstrap test,
+$p = 0.001$). This pattern of significance held consistently across all
+model--method combinations evaluated.
+
+
+
+To assess stability without reusing the held-out test set, stratified 5-fold cross-validation was performed on \texttt{hc3\_Train} using \texttt{performCrossValidation()} from AbstractML, with hyperparameters fixed to the best random-search configuration per sklearn model. SetFit was excluded due to fine-tuning cost on CPU. Table~\ref{tab:cv-results} reports mean $\pm$ standard deviation across folds.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Five-fold stratified CV on \texttt{hc3\_Train} (mean $\pm$ std).}
+  \label{tab:cv-results}
+  \begin{tabular}{lcc}
+    \hline
+    Model & CV Accuracy & CV F1 \\
+    \hline
+    Logistic Regression & $0.924 \pm 0.003$ & $0.924 \pm 0.003$ \\
+    Random Forest       & $0.902 \pm 0.004$ & $0.900 \pm 0.004$ \\
+    XGBoost             & $0.961 \pm 0.002$ & $0.961 \pm 0.002$ \\
+    KNN                 & $0.888 \pm 0.005$ & $0.888 \pm 0.005$ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+CV scores align closely with held-out test results (e.g.\ XGBoost: CV F1 $0.961 \pm 0.002$ vs.\ test F1 $0.964$) and remain well above the $0.5$ random baseline, with low fold-to-fold variance ($\sigma \leq 0.005$), indicating stable generalisation rather than sensitivity to a single split.
+
+
+
+
+
+\subsection{Final Evaluation}
+
+\textit{This section summarises, side by side, the final tuned
+performance of every model on the held-out test set(ALL Stages- Initial Training, Random and Bayesian Search Optimization) — accuracy, precision,
+recall, and F1 at minimum — and identify the best-performing candidate
+overall. It should also report whether the difference between the top two
+or three models is statistically meaningful, e.g.\ via a paired
+significance test such as McNemar's test on the test-set predictions, or
+bootstrapped confidence intervals on F1/accuracy, rather than relying on a
+single point-estimate comparison. }
+
+
+
+\begin{table}[h]
+\centering
+\caption{Initial training vs. Random search vs. Bayesian optimization: best F1 / accuracy by model.}
+\label{tab:hpo_results}
+\small
+\begin{tabular}{l|cc|cc|cc}
+\toprule
+& \multicolumn{2}{c|}{Initial} & \multicolumn{2}{c|}{Random} & \multicolumn{2}{c}{Bayesian} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+Model & Best F1 & Best Accuracy & Best F1 & Best Accuracy & Best F1 & Best Accuracy \\
+\midrule
+Logistic Regression & 0.959& 0.959 & 0.927 & 0.927 & 0.926 & 0.926 \\
+KNN                  & 0.869       & 0.869       & 0.893 & 0.893 & 0.893 & 0.893 \\
+Random Forest        & 0.898       & 0.901       & 0.905 & 0.907 & 0.906 & 0.908 \\
+XGBoost              & 0.959       & 0.959       & 0.964 & 0.964 & 0.924 & 0.924 \\
+MiniLM (SetFit)      & 0.983       & 0.983       & 0.980 & 0.980 & 0.98    & 0.98    \\
+\bottomrule
+\end{tabular}
+\vspace{2pt}
+\end{table}
+
+
+\textit{- Initial stage: \\
+Judging by all the Confusion Matrixes of all models we can clearly see that in the test- held out Dataset Evaluation the Models all performed reasonably well all over 0.86 F1 and Accuracy.(though some results could be based on luck.. thats why we performed HPO and Statistical methodologies for more robust Results).\\
+- Random and Bayesian Search:\\
+Models definitely generally Improved but not by a lot. This is due to the issue that we had a relatively small Search space alongside Search iterations(Dataset is huge for a single commercial CPU or GPU to handle). Even though that was the case we still improved with the few iterations and we would definitley improve more with bigger search space!\\ Also it must be noted that they are also Statistically Proven reliable by multiple Metrics/Conditions that we have mentioned just above (obviously on test Data).
+\\
+
+}
+\\
+
+
+
+
+
+
+
+
+\section{Conclusions}
+We have established why AI Text Detection is gonna be important on the future and we have proposed some general Benchmark/Solutions on this specific Dataset with our own Search Space, Models and Conditions. Obviously this work (in order to be even more reliable and for models to generalize) must be trained and tested on a wider array of Datasets, Features, Train Methods, and implement Zero shot and LLM/LMs Methods for the entire stack with Stricter Learning Curve for the model to  generalze no matter the model(not necessarily ChatGPT - with just this specific format of answers- different ChatGPT Models etc..)  Especially if we want it to thrive into the real world and the Bittensor System  where Miners are constantly Evolving and imporving their Code/Models etc..
+% ============================================================
+%  CHAPTER 7 — Conclusions
+% ============================================================
+\chapter{Decentralized AI Blockchain Capitalism}
+\label{chap:evolution}
+
+\includegraphics[width=12cm]{download.png}\\
+
+
+Capitalism has never been a single, fixed system. It is a \textbf{living
+architecture}—one that adapts, mutates, and reorganises itself around whatever
+technology most efficiently produces and concentrates value. Each phase of its
+evolution has been defined by a new answer to the same fundamental question:
+\textit{who controls the means of production, and how are the gains distributed?}~[4,5]\\[0.4cm]
+
+From \textbf{mercantile capitalism}, where value was extracted through trade
+monopolies and colonial control, to \textbf{industrial capitalism}, where it
+was extracted through ownership of machinery and the labour of wages—to
+\textbf{financial capitalism}, where it was extracted through the control of
+credit, derivatives, and platform monopolies~[4]. In every phase, the pattern is
+the same: a new technology emerges, a new class captures it, and the gains
+concentrate upward~[5].\\[0.4cm]
+
+The digital economy accelerated this pattern to its logical extreme. A handful
+of technology companies—controlling data, distribution, and now artificial
+intelligence—have achieved a degree of economic concentration that mercantile
+monopolists could only dream of. The means of production in the twenty-first
+century is \textbf{intelligence}, and it is almost entirely privately owned~[4,5].\\[0.4cm]
+
+Bittensor does not merely propose a new technology. It proposes a new
+\textbf{ownership structure for the means of intelligence production}~[3,8]—one
+in which the gains flow directly to those who produce the value, governed
+by mathematics rather than management. In every prior phase of capitalism,
+the worker—the person actually producing value—received the smallest share
+of the output they generated. Bittensor's architecture inverts this: emissions
+flow directly to miners, validators, and stakers in proportion to their verified
+contribution. There is no board of directors extracting surplus, no opaque
+performance review determining compensation. The protocol \emph{is} the
+employment contract—and it is mathematically enforced~[9,11].\\[0.4cm]
+
+What makes this transition historically significant is the nature of the
+commodity being produced. Every prior capitalist phase produced \emph{physical}
+or \emph{financial} goods—objects, energy, credit~[4]. Bittensor produces
+\textbf{intelligence}: the capacity to solve problems, generate knowledge,
+and automate cognition at scale~[3]. If intelligence becomes the dominant factor
+of production in the coming decades—and there is substantial evidence that
+it will—then the question of \emph{who owns the means of intelligence
+production} becomes the defining political-economic question of our time.
+Bittensor's answer is unambiguous: \textbf{no one owns it, and everyone
+can contribute to it}~[6,7].\\[0.4cm]
+
+The closest historical analogy is \textbf{open source software}. Just as
+Linux, Python, and GitHub allowed any developer anywhere in the world to
+take existing code, build upon it, and contribute improvements back to the
+collective—Bittensor extends this principle to intelligence itself~[8]. A miner
+does not need to build from scratch. They can take an existing open model,
+stand on the shoulders of every researcher who came before them, extend it
+with their own ideas, and deploy it into the network. The accumulated
+knowledge of humanity becomes the starting point, not the finish line.\\[0.4cm]
+
+But open source alone has a ceiling. GitHub democratised contribution—yet
+without economic incentives, it could only go so far. The reality of open
+source is that the vast majority of its value is captured by corporations
+that build proprietary products on top of free community labour. The
+contributors are rarely the beneficiaries. \textbf{Bittensor supercharges
+the open source model by doing what GitHub never could: paying people for
+their work}~[3,8]. Miners are economically rewarded for deploying better models.
+Validators are rewarded for identifying them. The entire network is aligned
+toward a single goal—producing the best possible intelligence—because that
+goal is also individually profitable for every participant. This is what
+cryptocurrency infrastructure is uniquely suited for: \textbf{uniting
+strangers toward a common goal through aligned economic incentives}, with
+no central coordinator required~[3].\\[0.4cm]
+
+This vision extends well beyond the academic community. NVIDIA CEO
+\textbf{Jensen Huang}, speaking on the future of AI, argued
+that while Bitcoin solved decentralised money, what the world now needs is
+a decentralised general-purpose intelligence layer—a commodity not of value
+storage, but of cognitive output:\footnote{Jensen Huang on
+intelligence currency: \url{https://youtube.com/shorts/4HodG3cX4Bk?is=rzmTdjeMwkYCa5Yh}} \\\footnote{Jensen Huang on Templar Covenant-72B:  \url{https://youtu.be/CxQN2vM9_l0?is=c1rlrPfn0a3Bu6W8}}\\[0.4cm]
+
+\begin{center}
+\textit{``Bitcoin is good... but imagine a more universal currency called intelligence—}\\
+\textit{and that coin is intelligence.''}\\
+\smallskip
+{\small — Jensen Huang, CEO of NVIDIA}
+\end{center}
+
+\vspace{0.4cm}
+
+Similarly, \textbf{Barry Silbert}, founder of Digital Currency Group, has
+described Bittensor as not only superior in design to Bitcoin from an
+incentive-alignment perspective, but as the \textbf{Linux of AI}—an open,
+permissionless foundation upon which the next generation of intelligent
+systems will be built:\footnote{Barry Silbert on Bittensor:
+\url{https://youtu.be/3qIL4oCe1Uo?is=L-DOwoNewmR33PSh}}\\[0.4cm]
+
+\begin{center}
+\textit{``Bittensor is the Linux of AI.''}\\
+\textit{``Bittensor is potentially a better store of value than Bitcoin.''}\\
+\smallskip
+{\small — Barry Silbert, Founder of Digital Currency Group}
+\end{center}
+
+\vspace{0.4cm}
+
+
+
+Bitcoin demonstrated that money could exist without central banks~[1]. Ethereum
+demonstrated that contracts could execute without lawyers~[2]. Bittensor
+demonstrates that intelligence can be produced, validated, and compensated
+without corporations~[3,6]. This is potentially the
+\textbf{next phase}—one in which the means of production are owned by the
+network, the rules are encoded in mathematics, and the only credential
+that matters is the quality of your contribution~[8,25].
+
+
+\chapter*{References/Bibliography}
+\addcontentsline{toc}{chapter}{References}
+
+\begin{enumerate}
+
+\item Nakamoto, S. (2008). \textit{Bitcoin: A Peer-to-Peer Electronic Cash System}. \url{https://bitcoin.org/bitcoin.pdf}
+
+\item Buterin, V. (2014). \textit{Ethereum: A Next-Generation Smart Contract and Decentralized Application Platform}. \url{https://ethereum.org/en/whitepaper/}
+
+\item Rao, Y., Steeves, J., et al. (2021). \textit{Bittensor: A Peer-to-Peer Intelligence Market}. \url{https://arxiv.org/pdf/2003.03917}
+
+\item Bresser-Pereira, L.C. (2020). \textit{Phases of Capitalism: From Mercantilism to Neoliberalism}. \url{https://www.bresserpereira.org.br/248-phases-of-capitalism.pdf}
+
+\item Wikipedia. (2024). \textit{History of Capitalism}. \url{https://en.wikipedia.org/wiki/History_of_capitalism}
+
+\item Bittensor Foundation. (2023). \textit{Bittensor Whitepaper}. \url{https://bittensor.com/whitepaper}
+
+\item Opentensor Foundation. (2024). \textit{Bittensor Official Documentation}. \url{https://docs.bittensor.com/}
+
+\item Opentensor Foundation. (2024). \textit{The Bittensor Standard}. \url{https://bittensor.com/content/the-bittensor-standard}
+
+\item Opentensor Foundation. (2024). \textit{Yuma Consensus}. \url{https://docs.learnbittensor.org/learn/yuma-consensus}
+
+\item Opentensor Foundation. (2024). \textit{Understanding Subnets}. \url{https://docs.learnbittensor.org/subnets/understanding-subnets}
+
+\item Opentensor Foundation. (2024). \textit{Emission}. \url{https://docs.learnbittensor.org/learn/emissions}
+
+\item Opentensor Foundation. (2024). \textit{Dynamic TAO FAQ}. \url{https://docs.learnbittensor.org/dynamic-tao/dtao-faq}
+
+\item Opentensor Foundation. (2024). \textit{Implementation of the Yuma Consensus Epoch}. \url{https://docs.learnbittensor.org/navigating-subtensor/epoch}
+
+\item Opentensor Foundation. (2024). \textit{Understanding Incentive Mechanisms}. \url{https://docs.learnbittensor.org/learn/anatomy-of-incentive-mechanism}
+
+\item Opentensor Foundation. (2024). \textit{Subtensor Consensus Documentation}. \url{https://github.com/opentensor/subtensor/blob/main/docs/consensus.md}
+
+\item Taostats. (2024). \textit{Tokenomics \& Emission}. \url{https://docs.taostats.io/docs/tokenomics}
+
+\item Taostats. (2024). \textit{TAO Token Documentation}. \url{https://docs.taostats.io/docs/tao}
+
+\item Taostats. (2024). \textit{Yuma Consensus Documentation}. \url{https://docs.taostats.io/docs/consensus}
+
+\item SubnetAlpha. (2025). \textit{Dynamic TAO: A Comprehensive Breakdown}. \url{https://subnetalpha.ai/dtao/}
+
+\item SubnetAlpha. (2025). \textit{Chutes (Subnet 64) Deep Dive}. \url{https://subnetalpha.ai/subnet/chutes/}
+
+\item TAO Media. (2026). \textit{The Investor's Guide to Chutes: Bittensor's Inference Layer}. \url{https://www.tao.media/the-investors-guide-to-chutes-bittensors-inference-layer/}
+
+\item Messari Research. (2025). \textit{Rayon Labs: The Subnet Trifecta}. \url{https://messari.io/report/rayon-labs-the-subnet-trifecta}
+
+\item BlockEden. (2026). \textit{Covenant-72B: The Largest Collaboratively Trained AI Model in Crypto History}. \url{https://blockeden.xyz/blog/2026/03/13/templar-covenant-72b-bittensor-largest-decentralized-llm-pretraining/}
+
+\item KuCoin News. (2026). \textit{Bittensor Subnet SN3's 72B Model Sparks Market Surge and Industry Attention}. \url{https://www.kucoin.com/news/flash/bittensor-subnet-sn3-s-72b-model-sparks-market-surge-and-industry-attention}
+
+\item arXiv. (2025). \textit{Bittensor Protocol: The Bitcoin in Decentralized AI? A Critical and Empirical Analysis}. \url{https://arxiv.org/pdf/2507.02951}
+
+\item CoinGecko. (2026). \textit{Top Bittensor Subnets: A Deep Dive into the dTAO Ecosystem}. \url{https://www.coingecko.com/learn/top-bittensor-subnets-dtao}
+
+\item TAO.app. (2025). \textit{TAO.app: Your Gateway to Bittensor}. \url{https://www.tao.app/}
+
+\item Opentensor Foundation. (2024). \textit{Bittensor Governance Documentation}. \url{https://docs.bittensor.com/governance}
+
+\item Opentensor Foundation. (2024). \textit{Bittensor Wallet and Key Management}. \url{https://docs.bittensor.com/getting-started/wallets}
+
+\item Opentensor Foundation. (2024). \textit{Registering on Subnets}. \url{https://docs.bittensor.com/subnets/register-validate-mine}
+
+\item Rayon Labs. (2025). \textit{Chutes Miner Repository}. \url{https://github.com/rayonlabs/chutes-miner}
+
+\item Ridges AI. (2025). \textit{Ridges Subnet Repository}. \url{https://github.com/ridgesai/ridges}
+
+\item Manifold Labs. (2025). \textit{Targon — Subnet 4}. \url{https://github.com/manifold-inc/targon}
+
+\item Templar Contributors. (2025). \textit{Templar Subnet Repository}. \url{https://github.com/tplr-ai/templar}
+
+\item OpenRouter. (2025). \textit{Model Rankings by Token Volume}. \url{https://openrouter.ai/rankings}
+
+\item Jack Clark. (2026). \textit{Import AI \#439}. \url{https://importai.substack.com/p/import-ai-439-ai-kernels-decentralized}
+
+
+\end{enumerate}
+
+
+
+
+
+
+\chapter*{Glossary}
+\addcontentsline{toc}{chapter}{Glossary}
+
+\begin{description}
+
+\item[\textbf{AMM (Automated Market Maker)}] A pricing mechanism that uses a mathematical formula rather than an order book to determine asset prices. Bittensor uses the constant product formula $k = \tau \times \alpha$ for subnet pools.
+
+\item[\textbf{Alpha Token ($\alpha$)}] The subnet-level token of each Bittensor subnet, hard-capped at 21 million units. Its price is determined by the AMM pool ratio $P_\alpha = \tau_{\text{pool}}/\alpha_{\text{pool}}$.
+
+\item[\textbf{Bonds ($B_{v,m}$)}] A validator's accumulated historical commitment to a miner, updated each tempo as $B_{v,m}^{(t)} = (1-\alpha) \cdot B_{v,m}^{(t-1)} + \alpha \cdot W_{v,m}^{(t)}$. Bonds determine a validator's dividend share and penalise weight copying.
+
+\item[\textbf{Consensus Score ($C_m$)}] The final stake-weighted score assigned to a miner by Yuma Consensus: $C_m = \text{WeightedMedian}_v(W_{v,m}, \tau_v)$.
+
+\item[\textbf{dTAO (Dynamic TAO)}] The upgrade that replaced centralised root-network emission allocation with a fully market-driven system, where each subnet's emission share is proportional to its staked \TAO\ pool.
+
+\item[\textbf{Emission}] Newly minted \TAO\ released every block and distributed to subnet participants. Post-halving rate: 3,600 \TAO/day.
+
+\item[\textbf{Halving}] A pre-programmed event that cuts the emission rate in half when a supply threshold is reached. Bittensor has two independent halving mechanisms: one for \TAO\ (network-level) and one for each subnet's Alpha token (subnet-level).
+
+\item[\textbf{Hotkey}] A cryptographic key pair used by miners and validators to sign transactions and identify themselves on the network.
+
+\item[\textbf{Immunity Period}] A protection window granted to newly registered subnets and miners during which they cannot be deregistered regardless of performance. For subnets, the immunity period is 4 months.
+
+\item[\textbf{Incentive ($I_m$)}] A miner's final emission share: $I_m = R_m \cdot T_m$.
+
+\item[\textbf{Miner}] A network participant who runs a computational node within a subnet, produces intelligence outputs, and earns \TAO\ proportional to their Yuma Consensus score.
+
+\item[\textbf{Rank ($R_m$)}] The stake-weighted sum of all validator scores assigned to a miner: $R_m = \sum_v s_v \cdot W_{v,m}$.
+
+\item[\textbf{Runtime}] The core logic encoded into the Bittensor blockchain (Subtensor) that defines all protocol rules. Changes require governance approval.
+
+\item[\textbf{Staker (Delegator)}] A participant who delegates \TAO\ to a validator, earning a proportional share of that validator's dividends minus a validator fee.
+
+\item[\textbf{Subnet}] A specialised, self-contained competitive market on Bittensor dedicated to a specific computational task, governed by its own incentive mechanism and Alpha token.
+
+\item[\textbf{Subnet Owner}] The participant who designs and maintains a subnet's incentive mechanism, receiving 18\% of subnet emissions by default.
+
+\item[\textbf{Subtensor}] The Bittensor blockchain—a Substrate-based Layer 1 that records all weights, emissions, registrations, and governance decisions.
+
+\item[\textbf{TAO ($\tau$)}] Bittensor's native token. Hard-capped at 21 million units. Functions as the network's reserve currency and unit of account for all economic activity.
+
+\item[\textbf{Tempo}] One scoring round on Bittensor, consisting of 360 blocks ($\approx$72 minutes). Emissions are distributed and weights are updated once per tempo.
+
+\item[\textbf{Trust ($T_m$)}] A measure of how consistently validators agree on a miner's quality: $T_m = \sum_v s_v \cdot \mathbb{1}[W_{v,m} > 0]$.
+
+\item[\textbf{Validator}] A participant who queries miners, evaluates their outputs, and submits weights to the blockchain. Must hold a minimum of 1,000 \TAO\ in stake to receive a validator permit.
+
+\item[\textbf{Validator Stake ($\tau_v$)}] The total TAO backing a validator: $\tau_v = \tau_{\text{self}} + \tau_{\text{delegated}}$.
+
+\item[\textbf{Weight ($W_{v,m}$)}] The score a validator assigns to a miner, reflecting the perceived quality of that miner's output. Submitted to the blockchain each tempo.
+
+\item[\textbf{Yuma Consensus}] Bittensor's incentive distribution mechanism. Aggregates validator weights into consensus miner scores and validator dividends using stake-weighted ranking, trust, and bonds.
+
+\item[\textbf{Block}] The fundamental unit of the Bittensor blockchain, produced approximately every 12 seconds. Each block emits 0.5 \TAO\ post-halving.
+
+\item[\textbf{Blockchain}] A distributed, append-only ledger maintained by a network of independent nodes.
+
+\item[\textbf{Coldkey}] A secure, offline key pair used to manage funds and ownership on Bittensor. Paired with a hotkey.
+
+\item[\textbf{Deregistration}] The removal of a miner's UID from a subnet when their performance falls below the minimum threshold.
+
+\item[\textbf{Dividend ($D_v$)}] The \TAO\ reward paid to validators each tempo: $D_v = \sum_m B_{v,m} \cdot I_m$.
+
+\item[\textbf{Proof of Work (PoW)}] A consensus mechanism where participants compete to solve computationally expensive mathematical puzzles. Used by Bitcoin.
+
+\item[\textbf{Proof of Stake (PoS)}] A consensus mechanism where validators are selected proportional to their staked capital. Used by Ethereum.
+
+\item[\textbf{Root Network}] The top-level layer of Bittensor that receives all newly minted \TAO\ and distributes it across subnets.
+
+\item[\textbf{Smart Contract}] Self-executing code stored on a blockchain that automatically enforces the terms of an agreement. Introduced by Ethereum.
+
+\item[\textbf{UID}] A unique integer identifier assigned to each miner or validator registered on a subnet.
+
+\item[\textbf{Validator Permit}] The right to submit weights and receive validator dividends on a subnet. Requires a minimum of 1,000 \TAO\ staked.
+
+\item[\textbf{zk-SNARKs}] Zero-knowledge succinct non-interactive arguments of knowledge—cryptographic proofs that allow one party to prove knowledge without revealing information. First correctly implemented on Zcash.
+
+\end{description}
+
+
+
+
+
+
+
+
+
+\end{document}
