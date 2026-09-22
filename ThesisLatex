@@ -1,5 +1,5 @@
 % ============================================================
-%  UNIVERSITY THESIS — THE EVOLUTION OF CAPITALISM
+%  UNIVERSITY THESIS — Mining Intelligence
 %  A Bittensor Thesis
 %  Compiled with pdflatex (or XeLaTeX / LuaLaTeX)
 % ============================================================
@@ -9,9 +9,12 @@
 % ── Packages ────────────────────────────────────────────────
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{textalpha}
 \usepackage{lmodern}                  % clean vector fonts
 \usepackage[english]{babel}
 \usepackage{csquotes}
+\usepackage{eso-pic}
+\usepackage{tikz}
 
 % Page geometry
 \usepackage[
@@ -61,7 +64,7 @@
 ]{hyperref}
 
 % ── Custom commands ──────────────────────────────────────────
-\newcommand{\TAO}{$\tau$}            % Bittensor native token symbol
+\newcommand{\TAO}{\ensuremath{\tau}}           % Bittensor native token symbol
 \newtheorem{definition}{Definition}[chapter]
 \newtheorem{proposition}{Proposition}[chapter]
 
@@ -89,23 +92,30 @@
 }
 % ── Title page ──────────────────────────────────────────────
 \begin{titlepage}
+\AddToShipoutPictureBG*{%
+  \AtPageUpperLeft{%
+    \put(\LenToUnit{1.5cm},\LenToUnit{-1.5cm}){%
+      \makebox[0pt][l]{\raisebox{-\height}{\includegraphics[width=3cm]{images/UOMLOGOGR.png}}}}}}
+
+
   \centering
-  \vspace*{1.5cm}
+  \vspace*{1.4cm}
 
   {\large \bfseries \textsc{University of Macedonia}}\\[0.4cm]
   {\large Computer Science \& Applied Informatics, Information Systems }\\[0.2cm]
   \rule{\linewidth}{0.5pt}\\[1.2cm]
 
   {\Huge \bfseries Mining Intelligence}\\[0.6cm]
-{\LARGE \itshape Towards Decentralized, Permissionles AI\\A \textbf{Bittensor} Thesis}\\[0.2cm]
-{\small \itshape (Decentralized AI)}\\[0.2cm]
+{\LARGE \itshape Towards Decentralized, Permissionles AI\\A \textbf{Bittensor} Architecture Thesis}\\[0.2cm]
+{\small   Architecture Thesis on Solving Real World ML Problems \itshape }\\[0.2cm]
 
   \rule{\linewidth}{0.5pt}\\[1cm]
 
   \begin{minipage}[t]{0.45\textwidth}
     \begin{flushleft}
       \textbf{Author}\\
-      Mwkos Panagiotis\\
+      Mwkos Panagiotis\\ \small{mwkospanagiots@gmail.com\\ iis22125@uom.edu.gr
+      }
 
     \end{flushleft}
   \end{minipage}
@@ -113,13 +123,13 @@
   \begin{minipage}[t]{0.45\textwidth}
     \begin{flushright}
       \textbf{Supervisors}\\
-      Prof.\ Dr.\ Manolis Stiakakis\\
-      Prof.\ Dr.\ Eutuxios Protopapadakis\\
+      Prof.\ Dr.\ Manolis Stiakakis\\\small{stiakakis@uom.edu.gr}\\
+      Prof.\ Dr.\ Eutuxios Protopapadakis\\\small{eftprot@uom.edu.gr}\\
 
     \end{flushright}
   \end{minipage}
 
-  \vspace{1.5cm}
+  \vspace{0.5cm}
 
   \includegraphics[width=12cm]{tao.png}
 
@@ -149,16 +159,78 @@ era redefined value, labour, and ownership. It then investigates how Bittensor's
 architecture, consensus mechanism, and \textbf{Mining Implementation Mechanisms/Architecture}~[3,7] may constitute
 a structurally new phase in this evolution: one where intelligence itself becomes
 the commodity, and decentralised networks replace centralised institutions as the
-primary engines of value creation.
+primary engines of value creation.\\\\
+We later Implement Mining: Solve a real world Problem, to Classify Text(AI or Not) and Produce some benchmarks to how Models could generalize in this complex environment.
+
+
 
 \bigskip
 \noindent\textbf{Keywords:} Bittensor, Decentralised AI, Capitalism, Evolution, Incentives, Yuma Consensus, Mining, Validating, Subnets, Tokenomics.
+
+
+
+
+
+
+
+
+
+% ============================================================
+%  ΕΚΤΕΤΑΜΕΝΗ ΠΕΡΙΛΗΨΗ — τοποθετείται μετά το Abstract
+%  Απαιτεί \usepackage{textalpha} στο preamble (pdfLaTeX)
+% ============================================================
+\chapter*{Εκτεταμένη Περίληψη}
+\addcontentsline{toc}{chapter}{\texorpdfstring{Εκτεταμένη Περίληψη}{Extended Summary (Greek)}}
+
+{\sloppy
+
+\section*{Εισαγωγή και Κίνητρο}
+
+Η τεχνητή νοημοσύνη (ΤΝ) εξελίσσεται στον σημαντικότερο παραγωγικό πόρο της εποχής μας, ωστόσο η ανάπτυξή της συγκεντρώνεται σε μικρό αριθμό τεχνολογικών εταιρειών που ελέγχουν δεδομένα, υπολογιστική ισχύ και μοντέλα. Η παρούσα εργασία εξετάζει αν τα αποκεντρωμένα δίκτυα blockchain μπορούν να προσφέρουν ένα εναλλακτικό μοντέλο παραγωγής και ιδιοκτησίας της νοημοσύνης, με μελέτη περίπτωσης το πρωτόκολλο Bittensor ($\tau$). Το κίνητρο προέρχεται από παραδείγματα όπως το GitHub (ανοιχτή συνεισφορά κώδικα), το Kaggle (ανοιχτός ανταγωνισμός σε προβλήματα μηχανικής μάθησης) και το Bitcoin (ανταμοιβή συμμετεχόντων χωρίς κεντρική αρχή). Το Bittensor συνδυάζει αυτές τις ιδέες και τις εφαρμόζει στην παραγωγή νοημοσύνης.
+
+\section*{Από το Κεντρικό Χρήμα στο Web3}
+
+Το πρώτο μέρος παρουσιάζει την εξέλιξη του χρήματος από τον αντιπραγματισμό στο εμπορευματικό χρήμα, τα μεταλλικά νομίσματα, τον κανόνα χρυσού και το σύγχρονο χρήμα fiat, του οποίου η έκδοση ελέγχεται από κεντρικές τράπεζες. Το Bitcoin (2009) εισήγαγε ένα κατανεμημένο καθολικό (blockchain) με μηχανισμό απόδειξης εργασίας (Proof of Work) και σταθερή μέγιστη προσφορά 21 εκατομμυρίων μονάδων. Το Ethereum επέκτεινε την ιδέα με τα έξυπνα συμβόλαια (smart contracts) και αργότερα μετέβη σε απόδειξη συμμετοχής (Proof of Stake). Ακολουθεί συγκριτική ανάλυση μηχανισμών συναίνεσης (Bitcoin, Ethereum, Cardano, Solana, Sui, Kaspa, Monero, Zcash, Hyperliquid), η οποία δείχνει ότι κάθε δίκτυο κάνει διαφορετικούς συμβιβασμούς μεταξύ ασφάλειας, ταχύτητας, αποκέντρωσης και ιδιωτικότητας.
+
+\section*{Το Πρωτόκολλο Bittensor}
+
+Το Bittensor είναι ένα ανοιχτό δίκτυο στο οποίο οποιοσδήποτε μπορεί να συνεισφέρει μοντέλα ή λογισμικό και να ανταμειφθεί ανάλογα με την ποιότητα της συνεισφοράς του. Οργανώνεται σε υποδίκτυα (subnets), καθένα από τα οποία λειτουργεί ως ανταγωνιστική αγορά για μια συγκεκριμένη εργασία. Συμμετέχουν τέσσερις ρόλοι: οι ιδιοκτήτες υποδικτύων ορίζουν το πρόβλημα και τον μηχανισμό κινήτρων, οι miners παράγουν λύσεις, οι επικυρωτές (validators) αξιολογούν τις λύσεις και οι stakers εκχωρούν κεφάλαιο σε επικυρωτές.\\
+
+Το οικονομικό σύστημα του Bittensor είναι σχεδιασμένο ώστε να ανταμείβει μόνο την πραγματική συνεισφορά. Το token TAO έχει περιορισμένη προσφορά (21 εκατομμύρια), όπως το Bitcoin, και νέα TAO εκδίδονται σταδιακά μόνο προς όσους παράγουν χρήσιμη δουλειά στο δίκτυο. Το κεφάλαιο κατευθύνεται από την ίδια την αγορά προς τα υποδίκτυα που παράγουν μεγαλύτερη αξία. Αυτά λαμβάνουν περισσότερες ανταμοιβές και προσελκύουν καλύτερους συμμετέχοντες, ενώ τα λιγότερο χρήσιμα υποδίκτυα χάνουν σταδιακά πόρους. Με αυτόν τον τρόπο, η κατανομή των πόρων δεν αποφασίζεται από μια κεντρική αρχή, αλλά από την αγορά.\\
+
+Για να αποφασιστεί ποιος αμείβεται και πόσο, το δίκτυο χρησιμοποιεί τον μηχανισμό Yuma Consensus, ο οποίος λειτουργεί ως σύστημα αξιολόγησης από ομοτίμους (peer review): οι επικυρωτές βαθμολογούν τους miners και οι ανταμοιβές κατανέμονται με βάση τη συνολική τους κρίση. Ο μηχανισμός είναι σχεδιασμένος ώστε η τίμια και ανεξάρτητη αξιολόγηση να είναι η πιο συμφέρουσα στρατηγική, ενώ η αντιγραφή ή η χειραγώγηση βαθμολογιών να αποθαρρύνεται οικονομικά. Η εργασία εξετάζει επίσης τους περιορισμούς του συστήματος, όπως το κόστος συμμετοχής, τον κίνδυνο συγκέντρωσης ισχύος και τη δυσκολία αντικειμενικής αξιολόγησης σύνθετων εργασιών. Τέλος, παρουσιάζονται υποδίκτυα που ήδη λειτουργούν σε διαφορετικούς τομείς, από την παροχή υπολογιστικής ισχύος και την εκπαίδευση μεγάλων γλωσσικών μοντέλων μέχρι την ανάπτυξη λογισμικού και την ανάλυση αθλητικών δεδομένων. Αυτό δείχνει ότι η ίδια αρχιτεκτονική μπορεί να εφαρμοστεί σε πολλά είδη προβλημάτων.
+
+\section*{Υλοποίηση Mining: Ανίχνευση Κειμένου από ΤΝ}
+
+Στο πρακτικό μέρος, η συμμετοχή ως miner αντιμετωπίζεται ως πρόβλημα μηχανικής μάθησης. Επιλέχθηκε το Subnet 32 (itsAI), με εργασία την ανίχνευση κειμένου που έχει παραχθεί από ΤΝ, επειδή η έξοδος είναι μετρήσιμη και επιτρέπει αντικειμενική αξιολόγηση. Η υλοποίηση βασίστηκε στη βιβλιοθήκη Python AbstractML.
+
+Χρησιμοποιήθηκε το σύνολο δεδομένων HC3 (48.644 γραμμές), το οποίο περιέχει ανθρώπινες απαντήσεις και απαντήσεις του ChatGPT στις ίδιες ερωτήσεις. Μετά τη διερευνητική ανάλυση δεδομένων (EDA), οι ελλείπουσες τιμές της στήλης \texttt{source} ορίστηκαν ως ξεχωριστή κατηγορία και τα δεδομένα μετατράπηκαν σε μορφή κειμένου--ετικέτας (171.776 γραμμές). Δημιουργήθηκαν χαρακτηριστικά από το ακατέργαστο κείμενο (πλήθος λέξεων και χαρακτήρων, μέσο μήκος λέξης), καθώς και διανυσματικές αναπαραστάσεις (embeddings) με το μοντέλο all-MiniLM-L6-v2. Η προβολή τους σε τρεις διαστάσεις με PCA έδειξε διακριτή ομαδοποίηση των δύο κλάσεων. Τα δεδομένα χωρίστηκαν σε αναλογία 80/10/10 σε επίπεδο ερώτησης, ώστε να αποφευχθεί διαρροή πληροφορίας μεταξύ των συνόλων.
+
+Αξιολογήθηκαν τα μοντέλα Logistic Regression, Random Forest, KNN, XGBoost και το γλωσσικό μοντέλο SetFit. Για τη βελτιστοποίηση υπερπαραμέτρων εφαρμόστηκαν τυχαία (Random) και μπεϋζιανή (Bayesian) αναζήτηση, αντί για πλήρη αναζήτηση πλέγματος (Grid Search), λόγω του υπολογιστικού κόστους.
+
+\section*{Αποτελέσματα}
+
+Όλα τα μοντέλα ξεπέρασαν το 0,86 σε F1 και ακρίβεια στο σύνολο ελέγχου. Την καλύτερη απόδοση πέτυχε το SetFit (F1 0,983), ακολουθούμενο από το XGBoost μετά από τυχαία αναζήτηση (F1 0,964). Η βελτιστοποίηση βελτίωσε τα KNN, Random Forest και XGBoost, με μικρά όμως περιθώρια, λόγω του περιορισμένου χώρου αναζήτησης και των διαθέσιμων υπολογιστικών πόρων. Όλα τα αποτελέσματα ήταν στατιστικά σημαντικά έναντι της τυχαίας πρόβλεψης ($p < 0{,}001$), ενώ η διασταυρωμένη επικύρωση πέντε πτυχών (5-fold cross-validation) έδωσε τιμές κοντά σε αυτές του συνόλου ελέγχου (π.χ. XGBoost: F1 $0{,}961 \pm 0{,}002$), γεγονός που υποδηλώνει σταθερή γενίκευση.
+
+\section*{Συμπεράσματα και Μελλοντική Εργασία}
+
+Η εργασία υποστηρίζει ότι το Bittensor αποτελεί μια νέα προσέγγιση στην παραγωγή νοημοσύνης, όπου η ανταμοιβή συνδέεται άμεσα με τη μετρήσιμη συνεισφορά και όχι με την ιδιοκτησία κεντρικών θεσμών. Το πρακτικό μέρος έδειξε ότι η συμμετοχή ως miner ακολουθεί την τυπική διαδικασία επίλυσης ενός προβλήματος μηχανικής μάθησης και πρότεινε σημεία αναφοράς (benchmarks) για το HC3. Για τη γενίκευση σε πραγματικές συνθήκες απαιτούνται περισσότερα σύνολα δεδομένων, κείμενα από διαφορετικά γλωσσικά μοντέλα, ευρύτεροι χώροι αναζήτησης και μέθοδοι zero-shot, ιδίως σε ένα περιβάλλον όπως το Bittensor, όπου οι miners βελτιώνουν συνεχώς τα μοντέλα.
+
+\par}
+
+
+
+
+
+
+
+
 
 % ── Acknowledgements ────────────────────────────────────────
 \chapter*{Acknowledgements}
 \addcontentsline{toc}{chapter}{Acknowledgements}
 
-The author wishes to thank his University Supervisors and ALL of the Open Source Community that has shaped and WILL CONTINUE to democratize intelligence for everyone going forward\dots
+The author wishes to thank his University Supervisors and ALL of the Open Source Community that has shaped and WILL CONTINUE to democratize intelligence for everyone in the future\dots
 
 % ── Table of contents ───────────────────────────────────────
 \tableofcontents
@@ -1295,27 +1367,6 @@ centralised providers including Anthropic, OpenAI, and Google~[20,22]. Miners ar
 GPU owners who earn \TAO\ for serving models reliably and efficiently;
 the better their performance, the greater their emission share.
 
-\subsection*{Subnet 3 — Templar (Decentralized AI Training)}
-Templar is arguably the most ambitious subnet in Bittensor's history and
-one of the most significant experiments in decentralised AI globally~[23]. Its
-mission is to become the world's best \textbf{decentralised model training
-platform}: miners contribute GPU compute and gradient updates toward the
-continuous, collaborative training of large-scale models, rewarded based
-on the quality of their contribution to reducing model loss.\\[0.4cm]
-
-In 2025, Templar achieved what had never been accomplished in either
-cryptocurrency or AI: the fully decentralised training of
-\textbf{Covenant-72B}—a 72 billion parameter model trained across globally
-distributed GPUs with no central server, no datacentre, and no single
-coordinating authority, operating at approximately $9 \times 10^{17}$
-FLOP/s—making it the largest active decentralised training network ever
-recorded~[23,24].\\[0.4cm]
-
-The significance was not lost on the broader AI community. \textbf{Jack Clark},
-co-founder of \textbf{Anthropic}, specifically highlighted Templar as the
-leading proof that incentive-driven, permissionless model training at scale
-is not only theoretically possible—but already
-happening~[24].
 
 \subsection*{Subnet 44 — Score (Decentralized Sports Intelligence)}
 \textbf{Score} is a decentralised computer vision platform built on Bittensor,
@@ -1434,7 +1485,7 @@ upgrade is the blockchain equivalent of changing the constitution.
 % ============================================================
 %  CHAPTER 4 — MINING IMPLEMENTATION
 % ============================================================
-\chapter{Mining Implementation}
+\chapter{Mining Intelligence}
 \label{chap:mining}
 
 Contributing as a miner on Bittensor is, at its core, no different from solving
@@ -1447,7 +1498,7 @@ for this thesis.
 \section{Problem Definition}
 \label{sec:mining-problem}
 
-The subnet selected for this implementation is \textbf{Subnet 32 — itsAI}.
+The subnet selected for this implementation is \textbf{Subnet 32 — itsAI}~[38].
 The subnet's incentive mechanism is built around a single, well-defined task:
 \textbf{AI-generated text detection}. Miners are rewarded for producing models
 capable of accurately distinguishing text written by a human from text
@@ -1469,7 +1520,7 @@ This Thesis uses the \href{https://github.com/MwkosP/AbstarctML}{AbstractML} Pyt
 \section{Exploratory Data Analysis (EDA)}
 \label{sec:mining-eda}
 
-The dataset used for this implementation is \textbf{HC3} (Human ChatGPT
+The dataset used for this implementation is \textbf{HC3} ~[37] (Human ChatGPT
 Comparison Corpus), a publicly available dataset pairing human-written and
 ChatGPT-generated answers to the same set of questions.\\[0.3cm]
 
@@ -1552,7 +1603,7 @@ standard supervised-learning shape required for classification.
 \end{figure}
 
 \subsection*{Raw-Text Feature Engineering}
-Before embedding the text, a deliberate decision was made to first extract
+~[41]Before embedding the text, a deliberate decision was made to first extract
 raw, human-interpretable statistics from it. Embeddings compress text into a
 geometric representation that is excellent for similarity and clustering, but
 which hides diagnostic signals that are useful during EDA and model
@@ -1600,7 +1651,7 @@ feature-complete version of the dataset used for modelling.
 \end{figure}
 
 \subsection*{Additional Plotting and EDA on Engineered Features}
-Using \texttt{PlotDataset()} from AbstractML, the answer embeddings were
+Using \texttt{PlotDataset()} from AbstractML, the answer embeddings~[40] were
 projected into 3 dimensions via PCA to visually inspect class separability
 between AI-generated and human-generated answers.
 
@@ -2031,13 +2082,13 @@ We have established why AI Text Detection is gonna be important on the future an
 % ============================================================
 %  CHAPTER 7 — Conclusions
 % ============================================================
-\chapter{Decentralized AI Blockchain Capitalism}
+\chapter{Decentralized AI }
 \label{chap:evolution}
 
 \includegraphics[width=12cm]{download.png}\\
 
 
-Capitalism has never been a single, fixed system. It is a \textbf{living
+Capitalism is a \textbf{living
 architecture}—one that adapts, mutates, and reorganises itself around whatever
 technology most efficiently produces and concentrates value. Each phase of its
 evolution has been defined by a new answer to the same fundamental question:
@@ -2057,26 +2108,15 @@ intelligence—have achieved a degree of economic concentration that mercantile
 monopolists could only dream of. The means of production in the twenty-first
 century is \textbf{intelligence}, and it is almost entirely privately owned~[4,5].\\[0.4cm]
 
-Bittensor does not merely propose a new technology. It proposes a new
-\textbf{ownership structure for the means of intelligence production}~[3,8]—one
-in which the gains flow directly to those who produce the value, governed
-by mathematics rather than management. In every prior phase of capitalism,
-the worker—the person actually producing value—received the smallest share
-of the output they generated. Bittensor's architecture inverts this: emissions
-flow directly to miners, validators, and stakers in proportion to their verified
-contribution. There is no board of directors extracting surplus, no opaque
-performance review determining compensation. The protocol \emph{is} the
-employment contract—and it is mathematically enforced~[9,11].\\[0.4cm]
+
 
 What makes this transition historically significant is the nature of the
 commodity being produced. Every prior capitalist phase produced \emph{physical}
-or \emph{financial} goods—objects, energy, credit~[4]. Bittensor produces
-\textbf{intelligence}: the capacity to solve problems, generate knowledge,
-and automate cognition at scale~[3]. If intelligence becomes the dominant factor
+or \emph{financial} goods—objects, energy, credit~[4]. If intelligence becomes the dominant factor
 of production in the coming decades—and there is substantial evidence that
 it will—then the question of \emph{who owns the means of intelligence
 production} becomes the defining political-economic question of our time.
-Bittensor's answer is unambiguous: \textbf{no one owns it, and everyone
+Bittensor's answer is unambiguous: \textbf{everyone owns it, and everyone
 can contribute to it}~[6,7].\\[0.4cm]
 
 The closest historical analogy is \textbf{open source software}. Just as
@@ -2085,22 +2125,8 @@ take existing code, build upon it, and contribute improvements back to the
 collective—Bittensor extends this principle to intelligence itself~[8]. A miner
 does not need to build from scratch. They can take an existing open model,
 stand on the shoulders of every researcher who came before them, extend it
-with their own ideas, and deploy it into the network. The accumulated
-knowledge of humanity becomes the starting point, not the finish line.\\[0.4cm]
+with their own ideas, and deploy it into the network. \\[0.4cm]
 
-But open source alone has a ceiling. GitHub democratised contribution—yet
-without economic incentives, it could only go so far. The reality of open
-source is that the vast majority of its value is captured by corporations
-that build proprietary products on top of free community labour. The
-contributors are rarely the beneficiaries. \textbf{Bittensor supercharges
-the open source model by doing what GitHub never could: paying people for
-their work}~[3,8]. Miners are economically rewarded for deploying better models.
-Validators are rewarded for identifying them. The entire network is aligned
-toward a single goal—producing the best possible intelligence—because that
-goal is also individually profitable for every participant. This is what
-cryptocurrency infrastructure is uniquely suited for: \textbf{uniting
-strangers toward a common goal through aligned economic incentives}, with
-no central coordinator required~[3].\\[0.4cm]
 
 This vision extends well beyond the academic community. NVIDIA CEO
 \textbf{Jensen Huang}, speaking on the future of AI, argued
@@ -2220,7 +2246,19 @@ that matters is the quality of your contribution~[8,25].
 
 \item OpenRouter. (2025). \textit{Model Rankings by Token Volume}. \url{https://openrouter.ai/rankings}
 
-\item Jack Clark. (2026). \textit{Import AI \#439}. \url{https://importai.substack.com/p/import-ai-439-ai-kernels-decentralized}
+\item Jack Clark. (2026). \textit{Import AI  \#439}. \url{https://importai.substack.com/p/import-ai-439-ai-kernels-decentralized}
+
+
+\item HC3 Dataset. \textit{Hc3  }. \url{https://huggingface.co/datasets/Hello-SimpleAI/HC3/viewer/all/train}
+
+
+\item ItsAI \textit{itsAI  }. \url{https://its-ai.org/en}
+
+\item Hyperparameter Optimization Methods \textit{Hyperparameter Optimization Methods }. \url{https://arxiv.org/pdf/2410.22854}
+
+\item Embeddings \textit{Embeddings  }. \url{https://web.stanford.edu/~jurafsky/slp3/5.pdf}
+
+\item Feature engineering \textit{Feature engineering}. \url{https://soclibrary.futa.edu.ng/books/feature-engineering-for-machine-learning-principles-and-techniques-for-data-scientists.9781491953242.78116%20(4).pdf}
 
 
 \end{enumerate}
@@ -2311,10 +2349,117 @@ that matters is the quality of your contribution~[8,25].
 
 
 
+\chapter*{Γλωσσάριο}
+\addcontentsline{toc}{chapter}{\texorpdfstring{Γλωσσάριο}{Glossary (Greek)}}
+
+\begin{description}
+
+\item[AMM (Αυτοματοποιημένος Διαμορφωτής Αγοράς / Automated Market Maker)] Μηχανισμός τιμολόγησης που χρησιμοποιεί έναν μαθηματικό τύπο αντί για βιβλίο εντολών (order book) για τον καθορισμό των τιμών των περιουσιακών στοιχείων. Το Bittensor χρησιμοποιεί τον τύπο σταθερού γινομένου $k = \tau \times \alpha$ για τα pools των υποδικτύων.
+
+\item[Token Alpha ($\alpha$)] Το token επιπέδου υποδικτύου κάθε subnet του Bittensor, με ανώτατο όριο προσφοράς 21 εκατομμύρια μονάδες. Η τιμή του καθορίζεται από τον λόγο του pool του AMM: $P_\alpha = \tau_{\text{pool}}/\alpha_{\text{pool}}$.
+
+\item[Δεσμοί (Bonds, $B_{v,m}$)] Η συσσωρευμένη ιστορική δέσμευση ενός validator προς έναν miner, η οποία ενημερώνεται σε κάθε tempo ως $B_{v,m}^{(t)} = (1-\alpha) \cdot B_{v,m}^{(t-1)} + \alpha \cdot W_{v,m}^{(t)}$. Οι δεσμοί καθορίζουν το μερίδιο μερισμάτων ενός validator και τιμωρούν την αντιγραφή βαρών (weight copying).
+
+\item[Βαθμολογία Συναίνεσης (Consensus Score, $C_m$)] Η τελική, σταθμισμένη ως προς το stake, βαθμολογία που αποδίδεται σε έναν miner από το Yuma Consensus: $C_m = \text{WeightedMedian}_v(W_{v,m}, \tau_v)$.
+
+\item[dTAO (Dynamic TAO)] Η αναβάθμιση που αντικατέστησε την κεντρικοποιημένη κατανομή εκπομπών μέσω του root network με ένα πλήρως αγοραίο σύστημα, στο οποίο το μερίδιο εκπομπής κάθε υποδικτύου είναι ανάλογο του pool \TAO\ που έχει γίνει stake σε αυτό.
+
+\item[Εκπομπή (Emission)] Νεοκοπέντα \TAO\ που απελευθερώνονται σε κάθε block και διανέμονται στους συμμετέχοντες των υποδικτύων. Ρυθμός μετά το halving: 3.600 \TAO/ημέρα.
+
+\item[Υποδιπλασιασμός (Halving)] Προκαθορισμένο γεγονός που μειώνει τον ρυθμό εκπομπής στο μισό όταν επιτευχθεί ένα συγκεκριμένο όριο προσφοράς. Το Bittensor διαθέτει δύο ανεξάρτητους μηχανισμούς halving: έναν για το \TAO\ (επίπεδο δικτύου) και έναν για το token Alpha κάθε υποδικτύου (επίπεδο υποδικτύου).
+
+\item[Hotkey] Ζεύγος κρυπτογραφικών κλειδιών που χρησιμοποιείται από miners και validators για την υπογραφή συναλλαγών και την ταυτοποίησή τους στο δίκτυο.
+
+\item[Περίοδος Ασυλίας (Immunity Period)] Χρονικό διάστημα προστασίας που παρέχεται σε νεοεγγεγραμμένα υποδίκτυα και miners, κατά το οποίο δεν μπορούν να απεγγραφούν ανεξάρτητα από την απόδοσή τους. Για τα υποδίκτυα, η περίοδος ασυλίας είναι 4 μήνες.
+
+\item[Κίνητρο (Incentive, $I_m$)] Το τελικό μερίδιο εκπομπής ενός miner: $I_m = R_m \cdot T_m$.
+
+\item[Miner] Συμμετέχων στο δίκτυο που λειτουργεί έναν υπολογιστικό κόμβο εντός ενός υποδικτύου, παράγει αποτελέσματα «νοημοσύνης» και κερδίζει \TAO\ ανάλογα με τη βαθμολογία του στο Yuma Consensus.
+
+\item[Κατάταξη (Rank, $R_m$)] Το σταθμισμένο ως προς το stake άθροισμα όλων των βαθμολογιών που αποδίδουν οι validators σε έναν miner: $R_m = \sum_v s_v \cdot W_{v,m}$.
+
+\item[Runtime] Η βασική λογική που είναι ενσωματωμένη στο blockchain του Bittensor (Subtensor) και ορίζει όλους τους κανόνες του πρωτοκόλλου. Οι αλλαγές σε αυτό απαιτούν έγκριση μέσω διακυβέρνησης (governance).
+
+\item[Staker (Delegator)] Συμμετέχων που εκχωρεί \TAO\ σε έναν validator, λαμβάνοντας αναλογικό μερίδιο των μερισμάτων του validator, αφού αφαιρεθεί η προμήθεια του validator.
+
+\item[Υποδίκτυο (Subnet)] Εξειδικευμένη, αυτόνομη ανταγωνιστική αγορά στο Bittensor, αφιερωμένη σε μια συγκεκριμένη υπολογιστική εργασία, η οποία διέπεται από τον δικό της μηχανισμό κινήτρων και το δικό της token Alpha.
+
+\item[Ιδιοκτήτης Υποδικτύου (Subnet Owner)] Ο συμμετέχων που σχεδιάζει και συντηρεί τον μηχανισμό κινήτρων ενός υποδικτύου, λαμβάνοντας εξ ορισμού το 18\% των εκπομπών του υποδικτύου.
+
+\item[Subtensor] Το blockchain του Bittensor --- ένα Layer 1 βασισμένο στο Substrate, το οποίο καταγράφει όλα τα βάρη, τις εκπομπές, τις εγγραφές και τις αποφάσεις διακυβέρνησης.
+
+\item[TAO ($\tau$)] Το εγγενές token του Bittensor, με ανώτατο όριο προσφοράς 21 εκατομμύρια μονάδες. Λειτουργεί ως αποθεματικό νόμισμα του δικτύου και ως μονάδα μέτρησης για κάθε οικονομική δραστηριότητα.
+
+\item[Tempo] Ένας γύρος βαθμολόγησης στο Bittensor, που αποτελείται από 360 blocks ($\approx$72 λεπτά). Οι εκπομπές διανέμονται και τα βάρη ενημερώνονται μία φορά ανά tempo.
+
+\item[Εμπιστοσύνη (Trust, $T_m$)] Μέτρο του πόσο σταθερά συμφωνούν οι validators για την ποιότητα ενός miner: $T_m = \sum_v s_v \cdot \mathbb{1}[W_{v,m} > 0]$.
+
+\item[Validator (Επικυρωτής)] Συμμετέχων που υποβάλλει ερωτήματα στους miners, αξιολογεί τα αποτελέσματά τους και υποβάλλει βάρη στο blockchain. Πρέπει να διαθέτει τουλάχιστον 1.000 \TAO\ σε stake για να λάβει άδεια validator.
+
+\item[Stake Validator ($\tau_v$)] Το συνολικό TAO που υποστηρίζει έναν validator: $\tau_v = \tau_{\text{self}} + \tau_{\text{delegated}}$.
+
+\item[Βάρος (Weight, $W_{v,m}$)] Η βαθμολογία που αποδίδει ένας validator σε έναν miner, η οποία αντανακλά την εκτιμώμενη ποιότητα των αποτελεσμάτων του miner. Υποβάλλεται στο blockchain σε κάθε tempo.
+
+\item[Yuma Consensus] Ο μηχανισμός διανομής κινήτρων του Bittensor. Συγκεντρώνει τα βάρη των validators σε βαθμολογίες συναίνεσης για τους miners και σε μερίσματα για τους validators, χρησιμοποιώντας σταθμισμένη ως προς το stake κατάταξη, εμπιστοσύνη και δεσμούς.
+
+\item[Block] Η θεμελιώδης μονάδα του blockchain του Bittensor, η οποία παράγεται περίπου κάθε 12 δευτερόλεπτα. Κάθε block εκπέμπει 0,5 \TAO\ μετά το halving.
+
+\item[Blockchain (Αλυσίδα Μπλοκ)] Κατανεμημένο καθολικό (ledger), στο οποίο τα δεδομένα μόνο προστίθενται, και το οποίο συντηρείται από ένα δίκτυο ανεξάρτητων κόμβων.
+
+\item[Coldkey] Ασφαλές, εκτός σύνδεσης (offline) ζεύγος κλειδιών που χρησιμοποιείται για τη διαχείριση κεφαλαίων και ιδιοκτησίας στο Bittensor. Συνδέεται με ένα hotkey.
+
+\item[Απεγγραφή (Deregistration)] Η αφαίρεση του UID ενός miner από ένα υποδίκτυο όταν η απόδοσή του πέσει κάτω από το ελάχιστο όριο.
+
+\item[Μέρισμα (Dividend, $D_v$)] Η ανταμοιβή σε \TAO\ που καταβάλλεται στους validators σε κάθε tempo: $D_v = \sum_m B_{v,m} \cdot I_m$.
+
+\item[Απόδειξη Εργασίας (Proof of Work, PoW)] Μηχανισμός συναίνεσης στον οποίο οι συμμετέχοντες ανταγωνίζονται στην επίλυση υπολογιστικά δαπανηρών μαθηματικών γρίφων. Χρησιμοποιείται από το Bitcoin.
+
+\item[Απόδειξη Συμμετοχής (Proof of Stake, PoS)] Μηχανισμός συναίνεσης στον οποίο οι validators επιλέγονται αναλογικά με το κεφάλαιο που έχουν δεσμεύσει (stake). Χρησιμοποιείται από το Ethereum.
+
+\item[Root Network] Το ανώτατο επίπεδο του Bittensor, το οποίο λαμβάνει όλα τα νεοκοπέντα \TAO\ και τα κατανέμει στα υποδίκτυα.
+
+\item[Έξυπνο Συμβόλαιο (Smart Contract)] Αυτοεκτελούμενος κώδικας αποθηκευμένος σε ένα blockchain, ο οποίος επιβάλλει αυτόματα τους όρους μιας συμφωνίας. Εισήχθη από το Ethereum.
+
+\item[UID] Μοναδικό ακέραιο αναγνωριστικό που αποδίδεται σε κάθε miner ή validator που είναι εγγεγραμμένος σε ένα υποδίκτυο.
+
+\item[Άδεια Validator (Validator Permit)] Το δικαίωμα υποβολής βαρών και λήψης μερισμάτων validator σε ένα υποδίκτυο. Απαιτεί τουλάχιστον 1.000 \TAO\ σε stake.
+
+\item[zk-SNARKs] Συνοπτικά, μη διαδραστικά επιχειρήματα γνώσης μηδενικής γνώσης (zero-knowledge succinct non-interactive arguments of knowledge) --- κρυπτογραφικές αποδείξεις που επιτρέπουν σε ένα μέρος να αποδείξει ότι κατέχει μια γνώση χωρίς να αποκαλύψει την ίδια την πληροφορία. Υλοποιήθηκαν σωστά για πρώτη φορά στο Zcash.
+
+\end{description}
 
 
 
 
+
+\chapter*{Declaration of AI Tool Use}
+\addcontentsline{toc}{chapter}{Declaration of AI Tool Use}
+
+In accordance with Section 5.4 of the Univeristy of Macedonia's Department's Thesis Regulations,
+the author declares the following use of Artificial Intelligence tools
+during the preparation of this thesis:
+
+
+\textbf{LLMs} — used for [e.g. translating the glossary
+into Greek, debugging and formatting LaTeX code and Information gathering and collection].
+
+All AI-assisted output was reviewed, verified and edited by the author.
+The research design, implementation, experiments, analysis and conclusions
+are the author's own work.
+
+
+
+
+
+
+
+
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=south east, inner sep=0pt]
+    at ([xshift=-1.5cm, yshift=1.5cm]current page.south east)
+    {\includegraphics[width=3cm]{images/UOMLOGOGR.png}};
+\end{tikzpicture}
+\end{document}
 
 
 \end{document}
